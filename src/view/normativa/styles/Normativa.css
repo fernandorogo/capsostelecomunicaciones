@@ -1,0 +1,11 @@
+/* =========================================================
+   NORMATIVA — ÍNDICE DE ESTILOS
+========================================================= */
+
+@import './base.css';
+@import './hero.css';
+@import './library.css';
+@import './cards.css';
+@import './notice.css';
+@import './responsive.css';
+@import './accessibility.css';

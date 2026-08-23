@@ -1,0 +1,200 @@
+/* HERO */
+
+.capsos-hero {
+  position: relative;
+  min-height: clamp(620px, 82svh, 820px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 24px 112px;
+  overflow: hidden;
+  isolation: isolate;
+  background-image: url('../../../assets/historia/PolitcasDeCalidad.jpeg');
+  background-position: center 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--capsos-white);
+  text-align: center;
+}
+
+.capsos-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  background: linear-gradient(
+    112deg,
+    rgba(4, 28, 50, 0.95) 0%,
+    rgba(7, 59, 107, 0.87) 42%,
+    rgba(11, 94, 168, 0.62) 72%,
+    rgba(4, 28, 50, 0.72) 100%
+  );
+}
+
+.capsos-hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -13rem;
+  bottom: -16rem;
+  width: 42rem;
+  height: 42rem;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 70px rgba(255, 255, 255, 0.025),
+    0 0 0 140px rgba(255, 255, 255, 0.018);
+  pointer-events: none;
+}
+
+.capsos-hero-overlay {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(91, 192, 222, 0.15),
+      transparent 34%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.04),
+      transparent 46%,
+      rgba(2, 20, 35, 0.42)
+    );
+}
+
+.capsos-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(980px, 100%);
+  padding: clamp(30px, 5vw, 60px);
+  animation: capsosHeroEntry 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.capsos-hero-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(520px, 70%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.58),
+    transparent
+  );
+}
+
+@keyframes capsosHeroEntry {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.capsos-eyebrow,
+.capsos-section-heading > span {
+  color: var(--capsos-cyan);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.capsos-eyebrow {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 24px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: #a9ebff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.capsos-eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--capsos-cyan);
+  box-shadow: 0 0 0 5px rgba(91, 192, 222, 0.14);
+}
+
+.capsos-hero h1 {
+  max-width: 940px;
+  margin: 0 auto 26px;
+  color: var(--capsos-white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.6rem, 6vw, 5.35rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.052em;
+  text-wrap: balance;
+  text-shadow: 0 8px 34px rgba(0, 0, 0, 0.24);
+}
+
+.capsos-hero p {
+  max-width: 735px;
+  margin: 0 auto 38px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.capsos-primary-button {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 25px 16px 29px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: var(--capsos-white);
+  color: var(--capsos-blue-dark);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    color 0.28s ease;
+}
+
+.capsos-primary-button::after {
+  content: '→';
+  font-size: 1.12rem;
+  line-height: 1;
+  transition: transform 0.28s ease;
+}
+
+.capsos-primary-button:hover {
+  transform: translateY(-4px);
+  color: var(--capsos-blue);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.28);
+}
+
+.capsos-primary-button:hover::after {
+  transform: translateX(4px);
+}
+

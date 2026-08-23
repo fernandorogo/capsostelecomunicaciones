@@ -1,0 +1,545 @@
+/* =========================================================
+   TARJETAS NORMATIVAS
+========================================================= */
+
+.normativa-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  align-items: stretch;
+
+  gap: 1.15rem;
+}
+
+.normativa-card {
+  --card-accent: #0d6efd;
+  --card-accent-soft: rgba(13, 110, 253, 0.1);
+  --card-accent-border: rgba(13, 110, 253, 0.22);
+
+  position: relative;
+  isolation: isolate;
+
+  min-width: 0;
+  min-height: 475px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 1.45rem;
+
+  border:
+    1px solid
+    rgba(12, 47, 78, 0.085);
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.995),
+      rgba(250, 253, 255, 0.98)
+    );
+
+  box-shadow:
+    0 18px 55px
+    rgba(13, 48, 78, 0.075);
+
+  transition:
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    border-color 0.32s ease;
+}
+
+.normativa-card::before {
+  content: '';
+
+  position: absolute;
+
+  z-index: -1;
+
+  top: -115px;
+  right: -90px;
+
+  width: 235px;
+  height: 235px;
+
+  border-radius: 50%;
+
+  background: var(--card-accent-soft);
+
+  transition:
+    transform 0.4s ease;
+}
+
+.normativa-card::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--card-accent),
+      transparent 72%
+    );
+}
+
+.normativa-card:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    var(--card-accent-border);
+
+  box-shadow:
+    0 28px 72px
+    rgba(13, 48, 78, 0.13);
+}
+
+.normativa-card:hover::before {
+  transform: scale(1.16);
+}
+
+.normativa-card--blue {
+  --card-accent: #0d6efd;
+  --card-accent-soft: rgba(13, 110, 253, 0.1);
+  --card-accent-border: rgba(13, 110, 253, 0.24);
+}
+
+.normativa-card--cyan {
+  --card-accent: #119fc2;
+  --card-accent-soft: rgba(17, 159, 194, 0.1);
+  --card-accent-border: rgba(17, 159, 194, 0.24);
+}
+
+.normativa-card--navy {
+  --card-accent: #0b466f;
+  --card-accent-soft: rgba(11, 70, 111, 0.1);
+  --card-accent-border: rgba(11, 70, 111, 0.24);
+}
+
+.normativa-card--gold {
+  --card-accent: #b77a10;
+  --card-accent-soft: rgba(183, 122, 16, 0.1);
+  --card-accent-border: rgba(183, 122, 16, 0.24);
+}
+
+.normativa-card--red {
+  --card-accent: #c83f3f;
+  --card-accent-soft: rgba(200, 63, 63, 0.09);
+  --card-accent-border: rgba(200, 63, 63, 0.22);
+}
+
+.normativa-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.normativa-card__index {
+  color:
+    rgba(8, 39, 64, 0.34);
+
+  font-size: 0.72rem;
+  font-weight: 850;
+
+  letter-spacing: 0.12em;
+}
+
+.normativa-card__status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.45rem;
+
+  max-width: 100%;
+
+  padding: 0.45rem 0.62rem;
+
+  border-radius: 999px;
+
+  font-size: 0.66rem;
+  font-weight: 820;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.035em;
+
+  text-align: center;
+}
+
+.normativa-card__status::before {
+  content: '';
+
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(0, 0, 0, 0.035);
+}
+
+.normativa-card__status--active {
+  color: #138255;
+  background: rgba(19, 130, 85, 0.09);
+}
+
+.normativa-card__status--official {
+  color: #116da6;
+  background: rgba(17, 109, 166, 0.09);
+}
+
+.normativa-card__status--historical {
+  color: #90620b;
+  background: rgba(196, 138, 23, 0.11);
+}
+
+.normativa-card__status--repealed {
+  color: #b93030;
+  background: rgba(214, 69, 69, 0.1);
+}
+
+.normativa-card__identity {
+  display: flex;
+  align-items: center;
+
+  gap: 0.85rem;
+
+  margin-bottom: 1.15rem;
+}
+
+.normativa-card__icon {
+  width: 52px;
+  height: 52px;
+
+  flex: 0 0 auto;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    var(--card-accent-border);
+
+  border-radius: 16px;
+
+  color: var(--card-accent);
+
+  background: var(--card-accent-soft);
+
+  font-size: 1.15rem;
+}
+
+.normativa-card__identity > div {
+  min-width: 0;
+}
+
+.normativa-card__identity small,
+.normativa-card__identity strong {
+  display: block;
+}
+
+.normativa-card__identity small {
+  margin-bottom: 0.18rem;
+
+  color: #7a8d9b;
+
+  font-size: 0.66rem;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.normativa-card__identity strong {
+  color: var(--norm-ink);
+
+  font-size: 1rem;
+
+  overflow-wrap: anywhere;
+}
+
+.normativa-card h3 {
+  margin: 0 0 0.72rem;
+
+  color: #09243a;
+
+  font-size: 1.27rem;
+  font-weight: 820;
+
+  line-height: 1.22;
+
+  letter-spacing: -0.022em;
+
+  text-wrap: balance;
+}
+
+.normativa-card__summary {
+  margin: 0 0 1rem;
+
+  color: #637483;
+
+  font-size: 0.86rem;
+
+  line-height: 1.68;
+
+  text-wrap: pretty;
+}
+
+.normativa-card__notice {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 0.55rem;
+
+  margin: 0 0 1rem;
+  padding: 0.72rem;
+
+  border:
+    1px solid
+    rgba(196, 138, 23, 0.15);
+
+  border-radius: 12px;
+
+  color: #6f5318;
+
+  background:
+    rgba(255, 247, 224, 0.74);
+
+  font-size: 0.74rem;
+
+  line-height: 1.55;
+}
+
+.normativa-card__notice svg {
+  flex: 0 0 auto;
+
+  margin-top: 0.13rem;
+}
+
+.normativa-card__meta {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 0.75rem;
+
+  margin:
+    auto
+    0
+    1rem;
+}
+
+.normativa-card__meta div {
+  min-width: 0;
+
+  padding-top: 0.75rem;
+
+  border-top:
+    1px solid
+    rgba(13, 52, 80, 0.09);
+}
+
+.normativa-card__meta dt {
+  margin-bottom: 0.22rem;
+
+  color: #8a9aa7;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.normativa-card__meta dd {
+  margin: 0;
+
+  color: #334f63;
+
+  font-size: 0.74rem;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.normativa-card__actions {
+  display: grid;
+
+  gap: 0.52rem;
+}
+
+.normativa-card__action {
+  min-width: 0;
+  min-height: 48px;
+
+  display: grid;
+
+  grid-template-columns:
+    36px
+    minmax(0, 1fr)
+    24px;
+
+  align-items: center;
+
+  gap: 0.62rem;
+
+  padding: 0.54rem 0.64rem;
+
+  border:
+    1px solid
+    rgba(12, 48, 76, 0.09);
+
+  border-radius: 12px;
+
+  color: #23465f;
+
+  background: #f7fafc;
+
+  font-size: 0.76rem;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.normativa-card__action:hover {
+  transform: translateX(3px);
+
+  border-color:
+    var(--card-accent-border);
+
+  color: var(--card-accent);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 20px
+    rgba(13, 48, 78, 0.07);
+}
+
+.normativa-card__action-icon {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: var(--card-accent);
+
+  background: var(--card-accent-soft);
+}
+
+.normativa-card__action-label {
+  min-width: 0;
+
+  overflow-wrap: anywhere;
+}
+
+.normativa-card__action-arrow {
+  display: grid;
+  place-items: center;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.normativa-card__action:hover
+.normativa-card__action-arrow {
+  transform: translateX(3px);
+}
+
+/* VACÍO */
+
+.normativa-empty {
+  grid-column: 1 / -1;
+
+  padding: 3.5rem 1.5rem;
+
+  border:
+    1px dashed
+    rgba(13, 76, 118, 0.2);
+
+  border-radius: 24px;
+
+  color: #657887;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  text-align: center;
+}
+
+.normativa-empty__icon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 0.9rem;
+
+  border-radius: 16px;
+
+  color: var(--norm-blue);
+
+  background:
+    rgba(13, 110, 253, 0.08);
+
+  font-size: 1.25rem;
+}
+
+.normativa-empty h3 {
+  margin: 0 0 0.45rem;
+
+  color: var(--norm-ink);
+}
+
+.normativa-empty p {
+  margin: 0 0 1rem;
+}
+
+.normativa-empty button {
+  border: 0;
+
+  color: var(--norm-blue);
+
+  background: transparent;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}

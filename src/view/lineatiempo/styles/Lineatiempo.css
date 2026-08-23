@@ -1,0 +1,19 @@
+/* =========================================================
+   LINEATIEMPO / NOSOTROS — ÍNDICE DE ESTILOS
+   Mantener este orden para conservar la cascada original.
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+@import './base.css';
+@import './hero.css';
+@import './navigation.css';
+@import './section-heading.css';
+@import './history.css';
+@import './about.css';
+@import './principles.css';
+@import './quality.css';
+@import './projection.css';
+@import './footer.css';
+@import './responsive.css';
+@import './accessibility.css';

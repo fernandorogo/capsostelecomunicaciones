@@ -1,0 +1,91 @@
+/* =========================================================
+   BASE
+========================================================= */
+
+.normativa-page {
+  --norm-blue: var(--capsos-blue, #0d6efd);
+  --norm-blue-strong: #0957c3;
+  --norm-cyan: var(--tech-cyan, #2bc7f0);
+  --norm-navy: #061523;
+  --norm-navy-soft: #0b2940;
+  --norm-ink: #071b2d;
+  --norm-text: #334e62;
+  --norm-muted: #627382;
+  --norm-soft: #f3f8fc;
+  --norm-border: rgba(10, 50, 82, 0.1);
+  --norm-shadow-sm: 0 12px 32px rgba(13, 48, 78, 0.07);
+  --norm-shadow: 0 24px 64px rgba(13, 48, 78, 0.1);
+  --norm-radius-sm: 14px;
+  --norm-radius: 22px;
+  --norm-radius-lg: 30px;
+
+  min-width: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+
+  background: #ffffff;
+  color: var(--norm-text);
+}
+
+.normativa-page *,
+.normativa-page *::before,
+.normativa-page *::after {
+  box-sizing: border-box;
+}
+
+.normativa-page button,
+.normativa-page input {
+  font: inherit;
+}
+
+.normativa-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.normativa-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  margin-bottom: 1rem;
+
+  color: var(--norm-blue);
+
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.normativa-kicker::before {
+  content: '';
+
+  width: 34px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--norm-blue),
+      var(--norm-cyan)
+    );
+}
+
+.normativa-page .visually-hidden {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  padding: 0 !important;
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+
+  border: 0 !important;
+}

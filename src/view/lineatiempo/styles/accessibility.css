@@ -1,0 +1,28 @@
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .about-card,
+  .principle-card,
+  .projection-card {
+    border-color: var(--capsos-blue);
+  }
+
+  .quality-card {
+    border-color: rgba(255, 255, 255, 0.52);
+  }
+}

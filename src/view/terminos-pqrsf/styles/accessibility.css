@@ -1,0 +1,34 @@
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+.pqrsf-terms-page a:focus-visible,
+.pqrsf-terms-page button:focus-visible {
+  outline:
+    3px solid
+    rgba(91, 192, 222, 0.75);
+
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pqrsf-terms-page *,
+  .pqrsf-terms-page *::before,
+  .pqrsf-terms-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .pqrsf-document,
+  .pqrsf-terms-section,
+  .pqrsf-index,
+  .pqrsf-summary-card,
+  .pqrsf-request-card {
+    border-color:
+      rgba(16, 37, 54, 0.32);
+  }
+}

@@ -1,0 +1,295 @@
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.pqrsf-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.pqrsf-summary-card {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    46px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 13px;
+
+  padding: 16px;
+
+  border:
+    1px solid
+    rgba(11, 94, 168, 0.1);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #fbfdff
+    );
+
+  box-shadow:
+    0 10px 28px
+    rgba(16, 37, 54, 0.045);
+}
+
+.pqrsf-summary-card__icon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  color: var(--pqrsf-blue);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(11, 94, 168, 0.08),
+      rgba(91, 192, 222, 0.11)
+    );
+}
+
+.pqrsf-summary-card h4 {
+  margin: 0 0 5px;
+
+  color: var(--pqrsf-ink);
+
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.pqrsf-summary-card p {
+  margin: 0;
+
+  color: var(--pqrsf-muted);
+
+  font-size: 0.76rem;
+
+  line-height: 1.55;
+}
+
+/* REQUEST TYPES */
+
+.pqrsf-request-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 10px;
+}
+
+.pqrsf-request-card {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    46px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 13px;
+
+  padding: 16px;
+
+  border:
+    1px solid
+    rgba(11, 94, 168, 0.09);
+
+  border-radius: 16px;
+
+  background: #f8fbfd;
+}
+
+.pqrsf-request-card__icon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  color: var(--pqrsf-blue);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 20px
+    rgba(16, 37, 54, 0.055);
+}
+
+.pqrsf-request-card h4 {
+  margin: 0 0 5px;
+
+  color: var(--pqrsf-ink);
+
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.pqrsf-request-card p {
+  margin: 0;
+
+  color: var(--pqrsf-muted);
+
+  font-size: 0.75rem !important;
+
+  line-height: 1.55 !important;
+}
+
+/* RELATED */
+
+.pqrsf-related {
+  margin-top:
+    clamp(34px, 5vw, 54px);
+
+  padding:
+    clamp(22px, 3vw, 30px);
+
+  border:
+    1px solid
+    rgba(11, 94, 168, 0.11);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8fbfd,
+      #ffffff
+    );
+}
+
+.pqrsf-related__header {
+  max-width: 650px;
+
+  margin-bottom: 20px;
+}
+
+.pqrsf-related__header h3 {
+  margin: 0 0 6px;
+
+  color: var(--pqrsf-ink);
+
+  font-size: 1.14rem;
+  font-weight: 800;
+}
+
+.pqrsf-related__header p {
+  margin: 0;
+
+  color: var(--pqrsf-muted);
+
+  font-size: 0.82rem;
+
+  line-height: 1.6;
+}
+
+.pqrsf-related__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.pqrsf-related-card {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr);
+
+  gap: 13px;
+
+  padding: 17px;
+
+  border:
+    1px solid
+    rgba(11, 94, 168, 0.09);
+
+  border-radius: 16px;
+
+  background: #ffffff;
+}
+
+.pqrsf-related-card__icon {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  color: var(--pqrsf-blue);
+
+  background:
+    rgba(11, 94, 168, 0.07);
+}
+
+.pqrsf-related-card h4 {
+  margin: 0 0 5px;
+
+  color: var(--pqrsf-ink);
+
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.pqrsf-related-card p {
+  margin: 0 0 10px;
+
+  color: var(--pqrsf-muted);
+
+  font-size: 0.75rem;
+
+  line-height: 1.55;
+}
+
+.pqrsf-related-card a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: var(--pqrsf-blue);
+
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+.pqrsf-related-card a i {
+  font-size: 0.62rem;
+
+  transition:
+    transform 0.22s ease;
+}
+
+.pqrsf-related-card a:hover i {
+  transform: translateX(3px);
+}

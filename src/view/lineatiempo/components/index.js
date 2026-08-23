@@ -1,0 +1,9 @@
+export { default as AboutSection } from './AboutSection';
+export { default as CapsosFooter } from './CapsosFooter';
+export { default as HistorySection } from './HistorySection';
+export { default as InstitutionalHero } from './InstitutionalHero';
+export { default as InstitutionalNav } from './InstitutionalNav';
+export { default as PrinciplesSection } from './PrinciplesSection';
+export { default as ProjectionSection } from './ProjectionSection';
+export { default as QualitySection } from './QualitySection';
+export { default as SectionHeading } from './SectionHeading';

@@ -1,0 +1,62 @@
+{
+  "name": "site",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://fernandorogo.github.io/capsostelecomunicaciones",
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^10.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "googleapis": "^173.0.0",
+    "jspdf": "^4.2.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^6.30.4",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.3",
+    "react-slick": "^0.31.0",
+    "sweetalert2": "^11.26.25",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "serve": "^14.2.4",
+    "sharp": "^0.35.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "optimize:gallery": "node ./src/scripts/optimize-capsos-images.cjs",
+    "prebuild": "npm run optimize:gallery",
+    "build": "react-scripts build",
+    "serve:pwa": "serve -s build -l 3000",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,273 @@
+@media (max-width: 1199.98px) {
+  .oc-hero-rail {
+    right: 22px;
+  }
+
+  .oc-rail-button {
+    min-width: 188px;
+  }
+
+  .oc-cases-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oc-case-media {
+    flex-basis: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .oc-hero {
+    min-height: 930px;
+  }
+
+  .oc-hero-content {
+    min-height: 800px;
+    padding-top: 9rem;
+    padding-bottom: 13rem;
+  }
+
+  .oc-hero-overlay {
+    background:
+      linear-gradient(90deg, rgba(2, 11, 20, 0.99), rgba(3, 17, 31, 0.83) 72%, rgba(3, 17, 31, 0.52)),
+      linear-gradient(180deg, rgba(2, 11, 20, 0.48), rgba(2, 11, 20, 0.88));
+  }
+
+  .oc-hero-rail {
+    display: none;
+  }
+
+  .oc-manifesto-grid,
+  .oc-section-heading,
+  .oc-formats-layout,
+  .oc-tech-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .oc-manifesto-grid,
+  .oc-section-heading,
+  .oc-formats-layout {
+    gap: 2.4rem;
+  }
+
+  .oc-manifesto-points,
+  .oc-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oc-journey-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oc-journey-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .oc-journey-card:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .oc-cases-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .oc-case-card {
+    min-height: 515px;
+  }
+
+  .oc-case-media {
+    flex-basis: 285px;
+    height: 285px;
+  }
+
+  .oc-formats-copy {
+    position: static;
+  }
+
+  .oc-tech-image {
+    min-height: 430px;
+  }
+
+  .oc-tech-image::after {
+    background: linear-gradient(180deg, transparent 52%, var(--oc-ink) 100%);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .oc-hero {
+    min-height: 940px;
+  }
+
+  .oc-hero-content {
+    align-items: flex-end;
+    min-height: 825px;
+    padding: 7.5rem 0 12.5rem;
+  }
+
+  .oc-hero-image {
+    object-position: 62% center !important;
+  }
+
+  .oc-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(2, 11, 20, 0.34) 0%, rgba(2, 11, 20, 0.77) 42%, rgba(2, 11, 20, 0.99) 78%),
+      linear-gradient(90deg, rgba(2, 11, 20, 0.78), rgba(2, 11, 20, 0.36));
+  }
+
+  .oc-eyebrow,
+  .oc-section-label {
+    font-size: 0.66rem;
+  }
+
+  .oc-hero-title {
+    font-size: clamp(2.45rem, 12vw, 3.6rem);
+    line-height: 0.99;
+    letter-spacing: -0.048em;
+  }
+
+  .oc-hero-description {
+    margin: 1rem 0 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .oc-hero-feature-line {
+    width: 100%;
+  }
+
+  .oc-hero-actions,
+  .oc-hero-actions .btn {
+    width: 100%;
+  }
+
+  .oc-hero-bottom-inner {
+    grid-template-columns: 1fr;
+    min-height: 120px;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+  }
+
+  .oc-hero-highlights {
+    display: none;
+  }
+
+  .oc-hero-controls {
+    justify-content: space-between;
+  }
+
+  .oc-progress-wrap {
+    flex: 1;
+  }
+
+  .oc-manifesto,
+  .oc-journey,
+  .oc-cases,
+  .oc-benefits,
+  .oc-formats,
+  .oc-tech {
+    padding: 5.2rem 0;
+  }
+
+  .oc-manifesto-title,
+  .oc-section-heading h2,
+  .oc-formats-copy h2 {
+    font-size: clamp(2.25rem, 10vw, 3.3rem);
+  }
+
+  .oc-manifesto-points,
+  .oc-benefits-grid,
+  .oc-cases-grid,
+  .oc-journey-track {
+    grid-template-columns: 1fr;
+  }
+
+  .oc-manifesto-point,
+  .oc-benefit-card {
+    min-height: auto;
+  }
+
+  .oc-journey-card {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .oc-journey-card:last-child {
+    border-bottom: 0;
+  }
+
+  .oc-case-card {
+    min-height: 0;
+  }
+
+  .oc-case-media {
+    flex-basis: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .oc-case-content {
+    min-height: 220px;
+    padding: 1.35rem;
+  }
+
+  .oc-case-content h3 {
+    min-height: auto;
+  }
+
+  .oc-format-row {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .oc-format-arrow {
+    display: none;
+  }
+
+  .oc-tech-shell {
+    border-radius: 28px;
+  }
+
+  .oc-tech-image {
+    min-height: 330px;
+  }
+
+  .oc-tech-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .oc-tech-actions,
+  .oc-tech-actions .btn,
+  .oc-final-actions,
+  .oc-final-actions .btn {
+    width: 100%;
+  }
+
+  .oc-final-cta {
+    min-height: 650px;
+  }
+
+  .oc-final-content {
+    padding: 5.5rem 0;
+  }
+
+  .oc-final-content h2 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oc-hero-image,
+  .oc-hero-copy,
+  .oc-progress-value {
+    animation: none !important;
+  }
+
+  .oc-case-card,
+  .oc-case-card img,
+  .oc-benefit-card,
+  .oc-journey-card,
+  .oc-format-row {
+    transition: none !important;
+  }
+}

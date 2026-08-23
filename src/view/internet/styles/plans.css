@@ -1,0 +1,242 @@
+        /* PLANES */
+        .inet-plans {
+          position: relative;
+          padding: 8rem 0;
+          background: #fff;
+        }
+
+        .inet-plan-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1.25rem;
+          align-items: stretch;
+          max-width: 1180px;
+          margin: 0 auto;
+        }
+
+        .inet-plan-card {
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          min-height: 610px;
+          border: 1px solid var(--inet-line);
+          border-radius: 30px;
+          background: #fff;
+          box-shadow: 0 20px 58px rgba(8, 48, 79, 0.08);
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .inet-plan-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 32px 82px rgba(8, 48, 79, 0.16);
+        }
+
+        .inet-plan-card.featured {
+          color: #fff;
+          border-color: rgba(255, 255, 255, 0.14);
+          background:
+            radial-gradient(circle at 86% 8%, rgba(39, 200, 243, 0.28), transparent 25%),
+            linear-gradient(150deg, #062039, #0b5d95);
+          box-shadow: 0 30px 76px rgba(5, 43, 72, 0.24);
+        }
+
+        .inet-plan-media {
+          position: relative;
+          height: 220px;
+          flex: 0 0 220px;
+          overflow: hidden;
+          background: #071c2e;
+        }
+
+        .inet-plan-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+
+        .inet-plan-card:hover .inet-plan-media img {
+          transform: scale(1.055);
+        }
+
+        .inet-plan-media::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, transparent 38%, rgba(3, 17, 31, 0.78) 100%);
+        }
+
+        .inet-plan-speed {
+          position: absolute;
+          right: 1rem;
+          bottom: 1rem;
+          z-index: 2;
+          padding: 0.55rem 0.7rem;
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 12px;
+          color: #fff;
+          background: rgba(3, 17, 31, 0.58);
+          font-size: 0.82rem;
+          font-weight: 850;
+          backdrop-filter: blur(12px);
+        }
+
+        .inet-plan-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          z-index: 3;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 34px;
+          padding: 0.5rem 0.8rem;
+          border: 1px solid rgba(255, 255, 255, 0.24);
+          border-radius: 999px;
+          color: #fff;
+          background: linear-gradient(135deg, #0878df, #27c8f3);
+          box-shadow: 0 12px 28px rgba(8, 120, 223, 0.32);
+          font-size: 0.7rem;
+          font-weight: 900;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          backdrop-filter: blur(12px);
+        }
+
+        .inet-plan-body {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          padding: 1.55rem;
+        }
+
+        .inet-plan-segment {
+          display: inline-flex;
+          width: fit-content;
+          margin-bottom: 0.9rem;
+          color: var(--inet-blue);
+          font-size: 0.7rem;
+          font-weight: 850;
+          letter-spacing: 0.09em;
+          text-transform: uppercase;
+        }
+
+        .inet-plan-card.featured .inet-plan-segment {
+          color: var(--inet-cyan);
+        }
+
+        .inet-plan-card h3 {
+          margin: 0 0 0.75rem;
+          color: var(--inet-ink);
+          font-size: 1.42rem;
+          font-weight: 830;
+          line-height: 1.18;
+        }
+
+        .inet-plan-card.featured h3 {
+          color: #fff;
+        }
+
+        .inet-plan-card p {
+          margin: 0 0 1.25rem;
+          color: var(--inet-muted);
+          font-size: 0.86rem;
+          line-height: 1.65;
+        }
+
+        .inet-plan-card.featured p {
+          color: rgba(255, 255, 255, 0.66);
+        }
+
+        .inet-plan-price {
+          margin-bottom: 1.25rem;
+          padding-bottom: 1.1rem;
+          border-bottom: 1px solid var(--inet-line);
+        }
+
+        .inet-plan-card.featured .inet-plan-price {
+          border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        .inet-plan-price small,
+        .inet-plan-price strong {
+          display: block;
+        }
+
+        .inet-plan-price small {
+          margin-bottom: 0.25rem;
+          color: var(--inet-muted);
+          font-size: 0.68rem;
+          font-weight: 750;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .inet-plan-card.featured .inet-plan-price small {
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        .inet-plan-price strong {
+          color: var(--inet-ink);
+          font-size: 1.3rem;
+        }
+
+        .inet-plan-card.featured .inet-plan-price strong {
+          color: #fff;
+        }
+
+        .inet-plan-features {
+          display: grid;
+          gap: 0.72rem;
+          margin: 0 0 1.5rem;
+          padding: 0;
+          list-style: none;
+        }
+
+        .inet-plan-features li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.6rem;
+          color: #405768;
+          font-size: 0.8rem;
+          line-height: 1.45;
+        }
+
+        .inet-plan-card.featured .inet-plan-features li {
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .inet-plan-features svg {
+          flex: 0 0 auto;
+          margin-top: 0.18rem;
+          color: var(--inet-cyan);
+        }
+
+        .inet-plan-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.55rem;
+          min-height: 48px;
+          margin-top: auto;
+          border-radius: 14px;
+          color: #fff;
+          background: var(--inet-blue);
+          font-size: 0.84rem;
+          font-weight: 800;
+          text-decoration: none;
+          transition: transform 0.25s ease, filter 0.25s ease;
+        }
+
+        .inet-plan-cta:hover {
+          color: #fff;
+          filter: brightness(1.07);
+          transform: translateY(-2px);
+        }
+
+        .inet-plan-card.featured .inet-plan-cta {
+          color: var(--inet-ink);
+          background: #fff;
+        }
+

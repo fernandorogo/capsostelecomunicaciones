@@ -1,0 +1,184 @@
+/* Fondo general con degradado azul claro */
+.pqrsf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3f2fd; /* Azul muy claro */
+  padding: 60px 20px;
+}
+
+/* Contenedor principal */
+.pqrsf-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Sección de texto */
+.pqrsf-text h4 {
+  color: #1565c0; /* Azul intenso */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.pqrsf-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0d47a1; /* Azul oscuro */
+  margin-top: 10px;
+}
+
+.pqrsf-description {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  color: #424242; /* Gris oscuro */
+}
+
+/* Botón de "Conoce +" */
+.pqrsf-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.pqrsf-btn:hover {
+  background: #1565c0;
+}
+
+/* Formulario */
+.pqrsf-form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  color: #0d47a1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1565c0;
+}
+
+/* Estilos de los inputs y selects */
+.form-input, 
+.form-select, 
+.form-phone {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #90caf9; /* Azul suave */
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.form-input::placeholder,
+.form-phone::placeholder {
+  color: #5472d3; /* Azul más tenue */
+}
+
+/* Estilo para el select del país */
+.phone-input {
+  display: flex;
+  gap: 10px;
+}
+
+/* Checkbox */
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.form-checkbox input {
+  margin-right: 10px;
+}
+
+.form-checkbox label {
+  font-size: 0.9rem;
+  color: #424242;
+}
+
+.form-checkbox span {
+  color: #1565c0;
+  font-weight: bold;
+}
+
+/* Botón de envío */
+.form-btn {
+  background: #1976d2;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.form-btn:hover {
+  background: #1565c0;
+}
+
+/* 📌 RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+  .pqrsf-text {
+      text-align: center;
+  }
+  
+  .pqrsf-text h4 {
+      font-size: 0.9rem;
+  }
+
+  .pqrsf-title {
+      font-size: 1.8rem;
+  }
+
+  .pqrsf-description {
+      font-size: 1rem;
+  }
+
+  .pqrsf-btn {
+      width: 100%;
+  }
+
+  .pqrsf-form {
+      width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pqrsf-container {
+      padding: 40px 15px;
+  }
+
+  .pqrsf-title {
+      font-size: 1.6rem;
+  }
+
+  .pqrsf-form {
+      padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pqrsf-title {
+      font-size: 1.4rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-phone {
+      padding: 10px;
+      font-size: 0.9rem;
+  }
+}

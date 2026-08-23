@@ -1,0 +1,189 @@
+/* =========================================================
+   VIGENCIA / INFORMACIÓN IMPORTANTE
+========================================================= */
+
+.normativa-notice-section {
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  padding:
+    clamp(5rem, 8vw, 7rem)
+    0;
+
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 87% 10%,
+      rgba(43, 199, 240, 0.18),
+      transparent 24%
+    ),
+    linear-gradient(
+      135deg,
+      #04131f 0%,
+      #082f52 55%,
+      #061b2c 100%
+    );
+}
+
+.normativa-notice-section::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  opacity: 0.12;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+
+  background-size: 64px 64px;
+}
+
+.normativa-notice-decoration {
+  position: absolute;
+
+  right: -180px;
+  bottom: -250px;
+
+  z-index: -1;
+
+  width: 520px;
+  height: 520px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 60px
+    rgba(255, 255, 255, 0.018),
+    0 0 0 120px
+    rgba(255, 255, 255, 0.012);
+
+  pointer-events: none;
+}
+
+.normativa-notice-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  align-items: center;
+
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.normativa-notice-copy
+.normativa-kicker {
+  color: var(--norm-cyan);
+}
+
+.normativa-notice-copy h2 {
+  max-width: 600px;
+
+  margin: 0 0 1.2rem;
+
+  font-size:
+    clamp(2.3rem, 4vw, 4.2rem);
+
+  font-weight: 850;
+
+  line-height: 1.02;
+
+  letter-spacing: -0.045em;
+
+  text-wrap: balance;
+}
+
+.normativa-notice-copy > p {
+  max-width: 590px;
+
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.69);
+
+  line-height: 1.8;
+}
+
+.normativa-notice-list {
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+}
+
+.normativa-notice-item {
+  display: grid;
+
+  grid-template-columns:
+    54px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 1rem;
+
+  padding: 1.35rem 0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+}
+
+.normativa-notice-icon {
+  width: 54px;
+  height: 54px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 17px;
+
+  color: var(--norm-cyan);
+
+  background:
+    rgba(255, 255, 255, 0.075);
+
+  font-size: 1.05rem;
+}
+
+.normativa-notice-item h3 {
+  margin: 0 0 0.35rem;
+
+  color: #ffffff;
+
+  font-size: 1.02rem;
+  font-weight: 790;
+}
+
+.normativa-notice-item p {
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.61);
+
+  font-size: 0.85rem;
+
+  line-height: 1.65;
+}

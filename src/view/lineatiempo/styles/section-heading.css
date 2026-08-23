@@ -1,0 +1,104 @@
+/* SECCIONES */
+
+.capsos-section {
+  position: relative;
+  width: min(var(--capsos-container), calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(82px, 9vw, 118px) 0;
+  scroll-margin-top: 86px;
+}
+
+.soft-section {
+  width: 100%;
+  max-width: none;
+  padding-right: max(24px, calc((100% - var(--capsos-container)) / 2));
+  padding-left: max(24px, calc((100% - var(--capsos-container)) / 2));
+  border-top: 1px solid rgba(11, 94, 168, 0.07);
+  border-bottom: 1px solid rgba(11, 94, 168, 0.07);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), transparent 48%),
+    var(--capsos-light);
+}
+
+.capsos-section-heading {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  margin: 0 auto clamp(46px, 6vw, 68px);
+  text-align: center;
+}
+
+.capsos-section-heading > span {
+  position: relative;
+  width: fit-content;
+  display: block;
+  margin: 0 auto 18px;
+  padding: 0 50px;
+}
+
+.capsos-section-heading > span::before,
+.capsos-section-heading > span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.65;
+}
+
+.capsos-section-heading > span::before {
+  left: 0;
+}
+
+.capsos-section-heading > span::after {
+  right: 0;
+}
+
+.capsos-section-heading h2 {
+  margin: 0 0 20px;
+  color: var(--capsos-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
+.capsos-section-heading p {
+  max-width: 730px;
+  margin: 0 auto;
+  color: var(--capsos-muted);
+  font-size: 1.02rem;
+  line-height: 1.82;
+  text-wrap: pretty;
+}
+
+.capsos-section-heading.light h2,
+.capsos-section-heading.light p {
+  color: var(--capsos-white);
+}
+
+.capsos-section-heading.light > span {
+  color: #9ee8ff;
+}
+
+.about-card p,
+.principle-content p,
+.quality-card p,
+.projection-card p {
+  margin: 0 0 15px;
+  color: var(--capsos-text);
+  font-size: 0.96rem;
+  line-height: 1.83;
+  text-wrap: pretty;
+}
+
+.about-card p:last-child,
+.principle-content p:last-child,
+.quality-card p:last-child,
+.projection-card p:last-child {
+  margin-bottom: 0;
+}
+

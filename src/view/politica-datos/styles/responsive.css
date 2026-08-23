@@ -1,0 +1,275 @@
+@media (max-width: 1199.98px) {
+  .data-policy-shell {
+    width:min(1140px,calc(100% - 36px));
+    grid-template-columns:minmax(285px,.72fr) minmax(0,1.28fr);
+    gap:24px;
+  }
+
+  .data-policy-sidebar__panel {
+    padding:24px;
+  }
+
+  .data-policy-sidebar__intro h1 {
+    font-size:clamp(1.8rem,3vw,2.45rem);
+  }
+
+  .data-policy-info-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-height: 920px) and (min-width: 992px) {
+  .data-policy-sidebar__panel {
+    max-height: calc(100vh - var(--capsos-navbar-height, 86px) - 24px);
+    padding: 20px;
+  }
+
+  .data-policy-sidebar__intro h1 {
+    margin-bottom: 12px;
+    font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+  }
+
+  .data-policy-sidebar__intro > p,
+  .data-policy-fact p,
+  .data-policy-sidebar__security p {
+    line-height: 1.45;
+  }
+
+  .data-policy-sidebar__facts {
+    margin-top: 16px;
+  }
+
+  .data-policy-fact {
+    padding: 8px 0;
+  }
+
+  .data-policy-sidebar__security,
+  .data-policy-sidebar__meta,
+  .data-policy-sidebar__nav {
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .data-policy-page {
+    padding:26px 0 40px;
+  }
+
+  .data-policy-shell {
+    width:min(900px,calc(100% - 30px));
+    grid-template-columns:1fr;
+  }
+
+  .data-policy-sidebar {
+    position:static;
+  }
+
+  .data-policy-sidebar__panel {
+    max-height:none;
+    overflow:visible;
+  }
+
+  .data-policy-sidebar__nav-list {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .data-policy-shell {
+    width:min(680px,calc(100% - 24px));
+  }
+
+  .data-policy-sidebar__panel,
+  .data-policy-document {
+    border-radius:22px;
+  }
+
+  .data-policy-sidebar__nav {
+    display:none;
+  }
+
+  .data-policy-header {
+    align-items:flex-start;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .data-policy-header__badge {
+    width:100%;
+  }
+
+  .data-policy-info-grid,
+  .data-policy-index__grid,
+  .data-policy-summary-grid,
+  .data-policy-card-grid,
+  .data-policy-definition-grid,
+  .data-policy-related__grid {
+    grid-template-columns:1fr;
+  }
+
+  .data-policy-section-grid {
+    grid-template-columns:1fr;
+  }
+
+  .data-policy-actions {
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .data-policy-actions__buttons {
+    width:100%;
+  }
+
+  .data-policy-action-button {
+    flex:1;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .data-policy-page {
+    padding-top:14px;
+  }
+
+  .data-policy-shell {
+    width:calc(100% - 18px);
+    gap:14px;
+  }
+
+  .data-policy-sidebar__panel,
+  .data-policy-document {
+    border-radius:18px;
+  }
+
+  .data-policy-sidebar__panel {
+    padding:22px 18px;
+  }
+
+  .data-policy-sidebar__intro h1 {
+    font-size:clamp(1.75rem,9vw,2.3rem);
+  }
+
+  .data-policy-sidebar__meta {
+    grid-template-columns:1fr;
+  }
+
+  .data-policy-header {
+    padding:26px 18px;
+  }
+
+  .data-policy-header h2 {
+    font-size:clamp(1.8rem,9vw,2.55rem);
+  }
+
+  .data-policy-body {
+    padding:22px 16px;
+  }
+
+  .data-policy-commitment {
+    grid-template-columns:42px minmax(0,1fr);
+    padding:15px;
+  }
+
+  .data-policy-commitment__icon {
+    width:42px;
+    height:42px;
+  }
+
+  .data-policy-index {
+    padding:16px;
+  }
+
+  .data-policy-index__header {
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .data-policy-index__item {
+    grid-template-columns:32px 30px minmax(0,1fr) 16px;
+    padding:8px;
+  }
+
+  .data-policy-section {
+    border-radius:16px;
+  }
+
+  .data-policy-section__header {
+    padding:14px 13px 14px 16px;
+  }
+
+  .data-policy-section__identity {
+    grid-template-columns:34px 36px minmax(0,1fr);
+    gap:8px;
+  }
+
+  .data-policy-section__number {
+    height:34px;
+  }
+
+  .data-policy-section__icon {
+    width:36px;
+    height:36px;
+  }
+
+  .data-policy-section__identity h3 {
+    font-size:.91rem;
+  }
+
+  .data-policy-section__top {
+    width:34px;
+    height:34px;
+  }
+
+  .data-policy-section__content {
+    padding:18px 16px;
+  }
+
+  .data-policy-summary-card,
+  .data-policy-information-card,
+  .data-policy-related-card {
+    grid-template-columns:42px minmax(0,1fr);
+    padding:14px;
+  }
+
+  .data-policy-definition-grid .data-policy-information-card {
+    grid-template-columns:1fr;
+  }
+
+  .data-policy-summary-card__icon,
+  .data-policy-information-card__icon,
+  .data-policy-related-card__icon {
+    width:42px;
+    height:42px;
+  }
+
+  .data-policy-actions {
+    padding:18px 16px;
+  }
+
+  .data-policy-actions__buttons {
+    flex-direction:column;
+  }
+
+  .data-policy-action-button {
+    width:100%;
+  }
+}
+
+@media (max-width: 379.98px) {
+  .data-policy-section__identity {
+    grid-template-columns:30px minmax(0,1fr);
+  }
+
+  .data-policy-section__icon {
+    display:none;
+  }
+
+  .data-policy-section__number {
+    height:30px;
+  }
+
+  .data-policy-section__identity h3 {
+    font-size:.85rem;
+  }
+}

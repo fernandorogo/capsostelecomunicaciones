@@ -1,0 +1,129 @@
+/* =========================================================
+   ACCIONES
+========================================================= */
+
+.pqrsf-document-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding:
+    22px
+    clamp(26px, 4vw, 48px);
+
+  border-top:
+    1px solid
+    rgba(11, 94, 168, 0.09);
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fbfd,
+      #f2f7fa
+    );
+}
+
+.pqrsf-document-actions__label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--pqrsf-blue);
+
+  font-size: 0.65rem;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pqrsf-document-actions p {
+  margin: 0;
+
+  color: var(--pqrsf-muted);
+
+  font-size: 0.75rem;
+}
+
+.pqrsf-document-actions__buttons {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.pqrsf-action-button {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 11px 16px;
+
+  border-radius: 12px;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.pqrsf-action-button--secondary {
+  border:
+    1px solid
+    rgba(11, 94, 168, 0.15);
+
+  color: var(--pqrsf-blue-dark);
+
+  background: #ffffff;
+}
+
+.pqrsf-action-button--primary {
+  border:
+    1px solid
+    var(--pqrsf-blue);
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pqrsf-blue),
+      var(--pqrsf-blue-dark)
+    );
+
+  box-shadow:
+    0 10px 24px
+    rgba(7, 59, 107, 0.16);
+}
+
+.pqrsf-action-button:hover {
+  transform: translateY(-2px);
+}
+
+.pqrsf-action-button--secondary:hover {
+  border-color:
+    rgba(11, 94, 168, 0.3);
+
+  background:
+    #f8fbfd;
+}
+
+.pqrsf-action-button--primary:hover {
+  box-shadow:
+    0 14px 30px
+    rgba(7, 59, 107, 0.22);
+}

@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+/* ======= VARIABLES (si ya están en otro css, esto no afecta) ======= */
+:root {
+  --primary: #00e5ff;
+  --primary-soft: #00bcd4;
+  --primary-dark: #007b8f;
+  --bg-dark: #050608;
+  --bg-overlay: rgba(5, 6, 12, 0.78);
+  --text-main: #f5f7fb;
+  --text-soft: #c5c8d8;
+  --border-soft: rgba(0, 229, 255, 0.25);
+}
+
+/* =========================================================
+   HERO CANAL PROPIO – Mismo lenguaje visual que Internet/TV
+========================================================= */
+
+.canalpropio-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80vh;
+  padding: 0 4vw 0 4vw;
+  background-image: url('../image/Canal.png');
+  background-size: cover;
+  background-position: center;
+  color: var(--text-main);
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+}
+
+/* Overlay suave para mejorar legibilidad */
+.canalpropio-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Contenedor de texto – solo dentro de canal propio */
+.canalpropio-container .text-container {
+  position: relative;
+  z-index: 10;
+  max-width: 780px;
+  padding: 32px 36px;
+  border-radius: 18px;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(14px);
+  text-align: right;
+}
+
+/* Badge “empresarial” */
+.canal-badge {
+  display: inline-block;
+  background: rgba(0, 229, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--primary);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  font-weight: 600;
+}
+
+/* Título del hero solo en Canalpropio */
+.canalpropio-container .title {
+  font-size: 3.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-shadow: 0 0 14px rgba(0, 229, 255, 0.85);
+}
+
+/* Descripción del hero solo en Canalpropio */
+.canalpropio-container .description {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* Mini lista de bullets debajo de la descripción */
+.canal-hero-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  font-size: 0.95rem;
+  color: #d7efff;
+}
+
+.canal-hero-list li {
+  margin-bottom: 6px;
+}
+
+.canal-hero-list li::before {
+  content: "• ";
+  color: var(--primary);
+}
+
+/* Botón del hero */
+.canalpropio-container .contact-button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+  color: #020509;
+  border: none;
+  padding: 13px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 10px 24px rgba(0, 229, 255, 0.65);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.canalpropio-container .contact-button:hover {
+  background: linear-gradient(135deg, var(--primary-soft), var(--primary-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(0, 229, 255, 0.85);
+}
+
+/* Fondo de imagen opcional (por si lo usas en otro lado) */
+.canalpropio-image {
+  display: none;
+}
+
+/* Animación de entrada */
+.canalpropio-container .fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================== RESPONSIVE HERO CANAL ================== */
+
+@media (max-width: 1200px) {
+  .canalpropio-container {
+    justify-content: center;
+    padding-right: 2vw;
+  }
+
+  .canalpropio-container .text-container {
+    max-width: 640px;
+  }
+
+  .canalpropio-container .title {
+    font-size: 2.7rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .canalpropio-container {
+    height: auto;
+    padding: 120px 5vw 80px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .canalpropio-container .text-container {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .canalpropio-container .text-container {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .canalpropio-container .title {
+    font-size: 2.3rem;
+    letter-spacing: 0.06em;
+  }
+
+  .canalpropio-container .description {
+    font-size: 0.98rem;
+  }
+
+  .canalpropio-container .contact-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .canalpropio-container {
+    padding: 110px 16px 70px;
+  }
+
+  .canalpropio-container .title {
+    font-size: 2rem;
+  }
+
+  .canalpropio-container .text-container {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.85);
+  }
+}
+
+/* =========================================================
+   SECCIONES ADICIONALES CANAL PROPIO
+   (aprovecha ancho, con inner hasta 1400px)
+========================================================= */
+
+.canal-section {
+  width: 100%;
+  padding: 70px 0;
+  border-top: 1px solid #e3e7f0;
+}
+
+/* fondos alternos por tipo de sección */
+.canal-benefits {
+  background-color: #f7f9fc;
+}
+
+.canal-usecases {
+  background-color: #ffffff;
+}
+
+.canal-formats {
+  background-color: #f7f9fc;
+}
+
+.canal-tech {
+  background-color: #ffffff;
+}
+
+/* contenedor interno centrado */
+.canal-section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3vw;
+}
+
+/* Grid de beneficios / bloques */
+.canal-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+.canal-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 20px;
+  border: 1px solid #e2e6f1;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea superior de acento */
+.canal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #1a73e8, #00e5ff);
+  transition: width 0.25s ease;
+}
+
+.canal-card:hover::before {
+  width: 100%;
+}
+
+/* Hover más marcado */
+.canal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
+  border-color: #c4d3ff;
+}
+
+.canal-card h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #1f2430;
+}
+
+.canal-card p {
+  font-size: 0.95rem;
+  color: #70778a;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   BENEFICIOS – Íconos
+========================================================= */
+
+.canal-benefit-card {
+  padding-top: 26px;
+}
+
+.canal-benefit-icon {
+  font-size: 1.9rem;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   CASOS DE USO – Tags
+========================================================= */
+
+.canal-usecase-card {
+  padding-top: 20px;
+}
+
+.canal-usecase-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #1a73e8;
+  background: #e8f1ff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+}
+
+/* =========================================================
+   FORMATOS – Íconos
+========================================================= */
+
+.canal-format-card {
+  padding-top: 26px;
+}
+
+.canal-format-icon {
+  font-size: 1.9rem;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   TECNOLOGÍA – Lista
+========================================================= */
+
+.canal-tech-list {
+  list-style: none;
+  margin: 26px auto 0;
+  max-width: 900px;
+  padding: 0;
+}
+
+.canal-tech-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.96rem;
+  color: #4b5565;
+  margin-bottom: 10px;
+}
+
+.canal-tech-list li svg {
+  margin-top: 2px;
+  color: #1a73e8;
+}
+
+/* Responsive para secciones */
+@media (max-width: 768px) {
+  .canal-section {
+    padding: 50px 0;
+  }
+
+  .canal-section-inner {
+    padding: 0 5vw;
+  }
+}
+
+/* =========================================================
+   CTA FINAL CANAL PROPIO – Estilo similar a Internet/TV
+========================================================= */
+
+.canal-cta-strip {
+  width: 100%;
+  background-color: #e8f1ff;
+  border-top: 1px solid #d4def4;
+  padding: 55px 4vw;
+}
+
+.canal-cta-content {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.canal-cta-content h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1f2430;
+  margin-bottom: 10px;
+}
+
+.canal-cta-content p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 750px;
+  color: #636a7b;
+}
+
+.canal-cta-strip .contact-button {
+  background: linear-gradient(135deg, #1a73e8, #0d57c6);
+  color: white;
+  padding: 15px 36px;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.35);
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.canal-cta-strip .contact-button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #1664d0, #0a4ca3);
+  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.45);
+}
+
+/* Responsive CTA */
+@media (max-width: 768px) {
+  .canal-cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .canal-cta-strip .contact-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,65 @@
+/* PROYECCIÓN */
+
+.projection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.projection-card {
+  position: relative;
+  min-width: 0;
+  min-height: 100%;
+  padding: clamp(30px, 3.6vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(11, 94, 168, 0.12);
+  border-radius: var(--capsos-radius-md);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--capsos-shadow-sm);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease,
+    border-color 0.32s ease;
+}
+
+.projection-card::after {
+  content: '';
+  position: absolute;
+  top: -68px;
+  right: -68px;
+  width: 190px;
+  height: 190px;
+  border: 1px solid rgba(33, 158, 188, 0.13);
+  border-radius: 50%;
+  background: rgba(33, 158, 188, 0.045);
+  box-shadow: 0 0 0 28px rgba(33, 158, 188, 0.025);
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease;
+}
+
+.projection-card:hover::after {
+  transform: scale(1.08);
+  background: rgba(33, 158, 188, 0.075);
+}
+
+.projection-number,
+.projection-card h3,
+.projection-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.projection-number {
+  width: fit-content;
+  margin-bottom: 32px;
+  padding-bottom: 13px;
+  border-bottom: 3px solid var(--capsos-cyan);
+  color: var(--capsos-blue);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+

@@ -1,0 +1,379 @@
+.oc-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 900px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--oc-ink);
+}
+
+.oc-hero-media,
+.oc-hero-image,
+.oc-hero-overlay,
+.oc-hero-vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.oc-hero-media {
+  z-index: -5;
+  overflow: hidden;
+  background: #020b14;
+}
+
+.oc-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.035);
+  animation: ocHeroImageIn 1.2s cubic-bezier(.22,.72,.2,1) both;
+}
+
+.oc-hero-overlay {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 11, 20, 0.995) 0%,
+      rgba(3, 17, 31, 0.97) 28%,
+      rgba(3, 17, 31, 0.8) 49%,
+      rgba(3, 17, 31, 0.22) 76%,
+      rgba(3, 17, 31, 0.16) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 11, 20, 0.48) 0%,
+      transparent 34%,
+      rgba(2, 11, 20, 0.92) 100%
+    );
+}
+
+.oc-hero-vignette {
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 36%, rgba(32, 200, 255, 0.13), transparent 30%),
+    radial-gradient(circle at 12% 78%, rgba(8, 118, 223, 0.16), transparent 30%);
+}
+
+.oc-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: linear-gradient(90deg, #000, transparent 65%);
+}
+
+.oc-hero-content {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  min-height: 760px;
+  padding: 9.5rem 0 12rem;
+}
+
+.oc-hero-copy {
+  max-width: 760px;
+  animation: ocHeroCopyIn 0.75s ease both;
+}
+
+.oc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.15rem;
+  color: var(--oc-electric);
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.oc-eyebrow::before {
+  content: '';
+  width: 34px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--oc-blue), var(--oc-electric));
+  box-shadow: 0 0 18px rgba(32, 200, 255, 0.55);
+}
+
+.oc-hero-title {
+  max-width: 720px;
+  margin: 0;
+  color: #fff !important;
+  font-size: clamp(3rem, 5.4vw, 5.65rem);
+  font-weight: 880;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+  text-shadow: 0 14px 44px rgba(0, 0, 0, 0.38);
+}
+
+.oc-hero-description {
+  max-width: 640px;
+  margin: 1.4rem 0 1.6rem;
+  color: rgba(239, 248, 255, 0.78) !important;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.oc-hero-feature-line {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  color: #fff;
+  background: rgba(3, 17, 31, 0.52);
+  backdrop-filter: blur(16px);
+}
+
+.oc-hero-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: #fff;
+  background: linear-gradient(145deg, var(--oc-blue), var(--oc-electric));
+  box-shadow: 0 0 28px rgba(32, 200, 255, 0.25);
+}
+
+.oc-hero-feature-line strong,
+.oc-hero-feature-line span {
+  display: block;
+}
+
+.oc-hero-feature-line strong {
+  margin-bottom: 0.12rem;
+  color: #fff;
+  font-size: 0.87rem;
+}
+
+.oc-hero-feature-line span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+}
+
+.oc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.oc-hero-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: 1.3rem;
+}
+
+.oc-secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(12px);
+}
+
+.oc-secondary-button:hover {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.13) !important;
+}
+
+.oc-hero-rail {
+  position: absolute;
+  top: 50%;
+  right: max(28px, calc((100vw - 1340px) / 2));
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transform: translateY(-50%);
+}
+
+.oc-rail-button {
+  display: grid;
+  grid-template-columns: 42px auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 220px;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.58);
+  background: transparent;
+  text-align: left;
+  transition: all 0.28s ease;
+}
+
+.oc-rail-number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 850;
+  backdrop-filter: blur(10px);
+}
+
+.oc-rail-copy strong,
+.oc-rail-copy span {
+  display: block;
+}
+
+.oc-rail-copy strong {
+  margin-bottom: 0.15rem;
+  color: inherit;
+  font-size: 0.78rem;
+}
+
+.oc-rail-copy span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.66rem;
+}
+
+.oc-rail-button:hover,
+.oc-rail-button.active {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  background: rgba(3, 17, 31, 0.5);
+  backdrop-filter: blur(14px);
+}
+
+.oc-rail-button.active .oc-rail-number {
+  border-color: var(--oc-electric);
+  background: linear-gradient(145deg, rgba(8, 118, 223, 0.95), rgba(32, 200, 255, 0.55));
+  box-shadow: 0 0 30px rgba(32, 200, 255, 0.25);
+}
+
+.oc-hero-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(2, 11, 20, 0.55);
+  backdrop-filter: blur(18px);
+}
+
+.oc-hero-bottom-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  min-height: 112px;
+}
+
+.oc-hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.oc-hero-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 62px;
+  padding-right: 1.35rem;
+}
+
+.oc-hero-highlight:not(:first-child) {
+  padding-left: 1.35rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.oc-highlight-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: var(--oc-electric);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.oc-hero-highlight strong,
+.oc-hero-highlight span {
+  display: block;
+}
+
+.oc-hero-highlight strong {
+  margin-bottom: 0.1rem;
+  color: #fff;
+  font-size: 0.78rem;
+}
+
+.oc-hero-highlight span {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.67rem;
+}
+
+.oc-hero-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.oc-control-button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.oc-control-button:hover {
+  transform: translateY(-2px);
+  background: var(--oc-blue);
+}
+
+.oc-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 190px;
+}
+
+.oc-progress-track {
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.oc-progress-value {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--oc-blue), var(--oc-electric));
+  animation: ocProgress 6.5s linear both;
+}
+
+.oc-progress-wrap small {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  font-weight: 750;
+  white-space: nowrap;
+}

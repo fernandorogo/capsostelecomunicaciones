@@ -1,0 +1,75 @@
+:root {
+  --capsos-blue: #0b5ea8;
+  --capsos-blue-dark: #073b6b;
+  --capsos-blue-light: #219ebc;
+  --capsos-cyan: #5bc0de;
+  --inet-cyan: var(--capsos-cyan);
+  --capsos-dark: #102536;
+  --capsos-text: #34495e;
+  --capsos-muted: #6b7b8c;
+  --capsos-light: #f4f8fb;
+  --capsos-white: #ffffff;
+  --capsos-border: #dce6ee;
+  --capsos-surface: #f8fbfd;
+  --capsos-blue-soft: rgba(11, 94, 168, 0.08);
+  --capsos-cyan-soft: rgba(91, 192, 222, 0.12);
+  --capsos-shadow-sm: 0 10px 30px rgba(16, 37, 54, 0.07);
+  --capsos-shadow: 0 22px 60px rgba(16, 37, 54, 0.11);
+  --capsos-shadow-lg: 0 34px 90px rgba(7, 59, 107, 0.17);
+  --capsos-radius-sm: 14px;
+  --capsos-radius-md: 20px;
+  --capsos-radius-lg: 28px;
+  --capsos-container: 1180px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--capsos-white);
+  color: var(--capsos-text);
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--capsos-blue);
+  color: var(--capsos-white);
+}
+
+.capsos-page {
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 7% 24%,
+      rgba(91, 192, 222, 0.08),
+      transparent 26rem
+    ),
+    radial-gradient(
+      circle at 94% 56%,
+      rgba(11, 94, 168, 0.055),
+      transparent 30rem
+    ),
+    var(--capsos-white);
+}
+
+.capsos-page :focus-visible {
+  outline: 3px solid var(--capsos-cyan);
+  outline-offset: 4px;
+}
+

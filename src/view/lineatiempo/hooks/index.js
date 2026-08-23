@@ -1,0 +1,1 @@
+export { useInstitutionalNavigation } from './useInstitutionalNavigation';

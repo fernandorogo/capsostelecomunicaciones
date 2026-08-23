@@ -1,0 +1,882 @@
+/* ==========================================================
+   CENTRO DE REGULACIÓN DIGITAL CAPSOS
+   Pegar al final de App.css
+========================================================== */
+
+.capsos-legal {
+  --legal-primary: var(--capsos-primary, #0878d1);
+  --legal-primary-dark: var(--capsos-primary-dark, #04599e);
+  --legal-secondary: var(--capsos-secondary, #29b7eb);
+  --legal-navy: var(--capsos-navy, #06142f);
+  --legal-navy-dark: var(--capsos-navy-dark, #030c20);
+  --legal-text: var(--capsos-text, #182235);
+  --legal-muted: var(--capsos-text-muted, #667085);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: clamp(72px, 8vw, 116px) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 4% 8%,
+      rgba(41, 183, 235, 0.12),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 96% 82%,
+      rgba(8, 120, 209, 0.11),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #f8fbff 0%, #eef5fb 100%);
+}
+
+.capsos-legal__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.48;
+  background-image:
+    linear-gradient(rgba(8, 120, 209, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 120, 209, 0.045) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 9%,
+    #000 91%,
+    transparent
+  );
+}
+
+.capsos-legal__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1480px;
+  padding-right: clamp(18px, 3vw, 42px);
+  padding-left: clamp(18px, 3vw, 42px);
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.capsos-legal__hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(330px, 0.55fr);
+  gap: clamp(34px, 5vw, 72px);
+  align-items: center;
+  margin-bottom: 32px;
+  padding: clamp(40px, 5vw, 72px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(41, 183, 235, 0.24),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      var(--legal-navy-dark) 0%,
+      var(--legal-navy) 52%,
+      #073b69 100%
+    );
+  box-shadow:
+    0 30px 72px rgba(3, 12, 32, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.capsos-legal__hero::before {
+  content: "";
+  position: absolute;
+  top: -38%;
+  right: -9%;
+  width: 540px;
+  height: 540px;
+  border: 1px solid rgba(41, 183, 235, 0.13);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 54px rgba(41, 183, 235, 0.035),
+    0 0 0 108px rgba(41, 183, 235, 0.025);
+}
+
+.capsos-legal__hero-copy,
+.capsos-legal__hero-panel {
+  position: relative;
+  z-index: 2;
+}
+
+.capsos-legal__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.capsos-legal__eyebrow-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 7px;
+  color: var(--legal-secondary);
+  background: rgba(41, 183, 235, 0.11);
+}
+
+.capsos-legal__eyebrow-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.capsos-legal__hero h2 {
+  max-width: 940px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2.6rem, 5vw, 5.1rem);
+  font-weight: 850;
+  line-height: 1.01;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.capsos-legal__hero h2 span {
+  color: var(--legal-secondary);
+  text-shadow: 0 0 28px rgba(41, 183, 235, 0.26);
+}
+
+.capsos-legal__hero-copy > p {
+  max-width: 830px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.73);
+  font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+}
+
+.capsos-legal__hero-panel {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.07);
+  text-align: center;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.capsos-legal__signal {
+  position: relative;
+  display: grid;
+  width: 118px;
+  height: 118px;
+  margin-bottom: 24px;
+  place-items: center;
+}
+
+.capsos-legal__signal > span {
+  position: absolute;
+  border: 1px solid rgba(41, 183, 235, 0.38);
+  border-radius: 50%;
+  animation: capsosLegalSignal 3.2s ease-out infinite;
+}
+
+.capsos-legal__signal > span:nth-child(1) {
+  width: 54px;
+  height: 54px;
+}
+
+.capsos-legal__signal > span:nth-child(2) {
+  width: 84px;
+  height: 84px;
+  animation-delay: 0.8s;
+}
+
+.capsos-legal__signal > span:nth-child(3) {
+  width: 116px;
+  height: 116px;
+  animation-delay: 1.6s;
+}
+
+.capsos-legal__signal-core {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(41, 183, 235, 0.32),
+      rgba(8, 120, 209, 0.18)
+    );
+  box-shadow: 0 0 26px rgba(41, 183, 235, 0.28);
+}
+
+.capsos-legal__signal-core svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.capsos-legal__hero-metrics {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.capsos-legal__hero-metrics div {
+  padding: 13px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.capsos-legal__hero-metrics strong,
+.capsos-legal__hero-metrics span {
+  display: block;
+}
+
+.capsos-legal__hero-metrics strong {
+  color: #ffffff;
+  font-size: 1.22rem;
+  font-weight: 850;
+}
+
+.capsos-legal__hero-metrics span {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+/* ==========================================================
+   TOOLBAR
+========================================================== */
+
+.capsos-legal__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin: 0 0 24px;
+  padding: 4px 2px;
+}
+
+.capsos-legal__toolbar > div:first-child > span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--legal-primary);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.capsos-legal__toolbar h3 {
+  margin: 0;
+  color: var(--legal-navy);
+  font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.capsos-legal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.capsos-legal__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--legal-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.capsos-legal__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.capsos-legal__legend .is-active {
+  background: var(--legal-primary);
+}
+
+.capsos-legal__legend .is-historical {
+  background: #c98b1b;
+}
+
+.capsos-legal__legend .is-repealed {
+  background: #c73a46;
+}
+
+/* ==========================================================
+   GRID: 4 TARJETAS EN LÍNEA
+========================================================== */
+
+.capsos-legal__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ==========================================================
+   TARJETAS
+========================================================== */
+
+.capsos-legal-card {
+  --card-accent: var(--legal-primary);
+  --card-accent-rgb: 8, 120, 209;
+
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(6, 20, 47, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow:
+    0 16px 38px rgba(3, 12, 32, 0.07),
+    0 4px 10px rgba(3, 12, 32, 0.035);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.capsos-legal-card:hover {
+  border-color: rgba(var(--card-accent-rgb), 0.28);
+  box-shadow:
+    0 25px 52px rgba(3, 12, 32, 0.12),
+    0 7px 16px rgba(3, 12, 32, 0.05);
+  transform: translateY(-7px);
+}
+
+.capsos-legal-card--cyan {
+  --card-accent: var(--legal-secondary);
+  --card-accent-rgb: 41, 183, 235;
+}
+
+.capsos-legal-card--navy {
+  --card-accent: var(--legal-navy);
+  --card-accent-rgb: 6, 20, 47;
+}
+
+.capsos-legal-card--red {
+  --card-accent: #c73a46;
+  --card-accent-rgb: 199, 58, 70;
+}
+
+.capsos-legal-card__line {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--card-accent),
+      rgba(var(--card-accent-rgb), 0.35)
+    );
+}
+
+.capsos-legal-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 24px 0;
+}
+
+.capsos-legal-card__number {
+  color: rgba(6, 20, 47, 0.28);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.capsos-legal-card__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.57rem;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.capsos-legal-card__status--active,
+.capsos-legal-card__status--official {
+  border: 1px solid rgba(8, 120, 209, 0.16);
+  color: var(--legal-primary-dark);
+  background: rgba(8, 120, 209, 0.07);
+}
+
+.capsos-legal-card__status--historical {
+  border: 1px solid rgba(201, 139, 27, 0.18);
+  color: #9a6507;
+  background: rgba(201, 139, 27, 0.08);
+}
+
+.capsos-legal-card__status--repealed {
+  border: 1px solid rgba(199, 58, 70, 0.17);
+  color: #a32d38;
+  background: rgba(199, 58, 70, 0.07);
+}
+
+.capsos-legal-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px 0;
+}
+
+.capsos-legal-card__icon {
+  display: grid;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(var(--card-accent-rgb), 0.15);
+  border-radius: 13px;
+  color: var(--card-accent);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--card-accent-rgb), 0.13),
+      rgba(var(--card-accent-rgb), 0.045)
+    );
+}
+
+.capsos-legal-card__icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.capsos-legal-card__identity div {
+  min-width: 0;
+}
+
+.capsos-legal-card__identity small,
+.capsos-legal-card__identity strong {
+  display: block;
+}
+
+.capsos-legal-card__identity small {
+  margin-bottom: 3px;
+  color: var(--card-accent);
+  font-size: 0.6rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.capsos-legal-card__identity strong {
+  overflow: hidden;
+  color: var(--legal-navy);
+  font-size: 0.9rem;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.capsos-legal-card__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 20px 24px 0;
+}
+
+.capsos-legal-card__content h4 {
+  margin: 0 0 12px;
+  color: var(--legal-navy);
+  font-size: 1.14rem;
+  font-weight: 850;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+}
+
+.capsos-legal-card__content > p {
+  margin: 0 0 20px;
+  color: var(--legal-muted);
+  font-size: 0.78rem;
+  line-height: 1.68;
+}
+
+.capsos-legal-card__meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.capsos-legal-card__meta div {
+  padding: 11px 12px;
+  border: 1px solid rgba(6, 20, 47, 0.07);
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+.capsos-legal-card__meta span,
+.capsos-legal-card__meta strong {
+  display: block;
+}
+
+.capsos-legal-card__meta span {
+  margin-bottom: 2px;
+  color: var(--legal-muted);
+  font-size: 0.55rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.capsos-legal-card__meta strong {
+  color: var(--legal-text);
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.capsos-legal-card__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 11px 12px;
+  border: 1px solid rgba(199, 58, 70, 0.13);
+  border-radius: 10px;
+  color: #9e2b35;
+  background: rgba(199, 58, 70, 0.05);
+}
+
+.capsos-legal-card__note > span {
+  display: grid;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(199, 58, 70, 0.1);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.capsos-legal-card__note p {
+  margin: 0;
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
+.capsos-legal-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 24px 24px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(6, 20, 47, 0.08);
+}
+
+.capsos-legal-card__action {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 10px;
+  border: 1px solid rgba(8, 120, 209, 0.14);
+  border-radius: 10px;
+  color: var(--legal-navy);
+  background: #f8fbff;
+  font-size: 0.69rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.capsos-legal-card__action:hover {
+  color: #ffffff;
+  border-color: var(--legal-primary);
+  background:
+    linear-gradient(
+      135deg,
+      var(--legal-primary-dark),
+      var(--legal-primary)
+    );
+  box-shadow: 0 10px 22px rgba(8, 120, 209, 0.18);
+  transform: translateY(-2px);
+}
+
+.capsos-legal-card__action--pdf {
+  border-color: rgba(184, 47, 59, 0.14);
+  background: rgba(184, 47, 59, 0.035);
+}
+
+.capsos-legal-card__action--pdf:hover {
+  border-color: #b82f3b;
+  background: linear-gradient(135deg, #9f2330, #c43a47);
+}
+
+.capsos-legal-card__action--replacement {
+  border-color: rgba(41, 183, 235, 0.18);
+  background: rgba(41, 183, 235, 0.05);
+}
+
+.capsos-legal-card__action-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--legal-primary);
+  background: #ffffff;
+}
+
+.capsos-legal-card__action--pdf .capsos-legal-card__action-icon {
+  color: #b82f3b;
+}
+
+.capsos-legal-card__action-icon svg,
+.capsos-legal-card__action-arrow svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.capsos-legal-card__action-arrow {
+  display: grid;
+  color: rgba(6, 20, 47, 0.34);
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.capsos-legal-card__action:hover .capsos-legal-card__action-arrow {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* ==========================================================
+   AVISO FINAL
+========================================================== */
+
+.capsos-legal__notice {
+  display: flex;
+  max-width: 980px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  margin: 36px auto 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(6, 20, 47, 0.08);
+  border-radius: 13px;
+  color: var(--legal-muted);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.capsos-legal__notice-icon {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
+  margin-top: 1px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--legal-primary);
+  background: rgba(8, 120, 209, 0.08);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.capsos-legal__notice p {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.58;
+}
+
+/* ==========================================================
+   ANIMACIÓN
+========================================================== */
+
+@keyframes capsosLegalSignal {
+  0% {
+    opacity: 0.72;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 1199.98px) {
+  .capsos-legal__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capsos-legal__hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .capsos-legal__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .capsos-legal__hero-panel {
+    min-height: auto;
+  }
+
+  .capsos-legal__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .capsos-legal__legend {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .capsos-legal {
+    padding: 58px 0;
+  }
+
+  .capsos-legal__hero {
+    padding: 32px 22px;
+    border-radius: 22px;
+  }
+
+  .capsos-legal__hero h2 {
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
+  }
+
+  .capsos-legal__hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .capsos-legal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capsos-legal-card__top,
+  .capsos-legal-card__identity {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .capsos-legal-card__content {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .capsos-legal-card__actions {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .capsos-legal__container {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .capsos-legal__hero {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .capsos-legal__hero h2 {
+    font-size: clamp(1.95rem, 10.5vw, 2.7rem);
+  }
+
+  .capsos-legal__toolbar h3 {
+    font-size: 1.55rem;
+  }
+
+  .capsos-legal__legend {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .capsos-legal-card {
+    border-radius: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capsos-legal__signal > span {
+    animation: none !important;
+  }
+
+  .capsos-legal-card,
+  .capsos-legal-card__action,
+  .capsos-legal-card__action-arrow {
+    transition: none !important;
+  }
+}

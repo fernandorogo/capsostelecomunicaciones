@@ -1,0 +1,14 @@
+/* =========================================================
+   TÉRMINOS PQRSF — ÍNDICE DE ESTILOS
+========================================================= */
+
+@import './base.css';
+@import './layout.css';
+@import './sidebar.css';
+@import './document.css';
+@import './sections.css';
+@import './cards.css';
+@import './actions.css';
+@import './responsive.css';
+@import './print.css';
+@import './accessibility.css';

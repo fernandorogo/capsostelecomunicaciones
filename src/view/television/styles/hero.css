@@ -1,0 +1,387 @@
+.tv-cinema-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 850px;
+  overflow: hidden;
+  padding-top: 84px;
+  color: #fff;
+  background: var(--tv-navy);
+}
+
+.tv-cinema-media,
+.tv-cinema-media img,
+.tv-cinema-overlay,
+.tv-cinema-vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.tv-cinema-media {
+  z-index: -4;
+  overflow: hidden;
+  background: var(--tv-navy);
+}
+
+.tv-cinema-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.035);
+  animation: tvHeroImageEnter 1s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.tv-cinema-overlay {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 17, 31, 0.99) 0%,
+      rgba(3, 17, 31, 0.96) 28%,
+      rgba(3, 17, 31, 0.78) 48%,
+      rgba(3, 17, 31, 0.24) 76%,
+      rgba(3, 17, 31, 0.2) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 17, 31, 0.2) 0%,
+      transparent 42%,
+      rgba(3, 17, 31, 0.92) 100%
+    );
+}
+
+.tv-cinema-vignette {
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 77% 40%, rgba(100, 220, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 10% 90%, rgba(22, 140, 255, 0.16), transparent 31%);
+}
+
+.tv-cinema-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 58%);
+}
+
+.tv-cinema-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  min-height: 680px;
+  padding: 4.5rem 0 9rem;
+}
+
+.tv-cinema-copy {
+  position: relative;
+  max-width: 710px;
+  animation: tvHeroCopyEnter 0.7s ease both;
+}
+
+.tv-cinema-copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -80px;
+  right: -100px;
+  bottom: -70px;
+  left: -90px;
+  border-radius: 50%;
+  background: rgba(3, 17, 31, 0.3);
+  filter: blur(44px);
+}
+
+.tv-cinema-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+  color: var(--tv-cyan) !important;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.tv-cinema-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--tv-blue), var(--tv-cyan));
+  box-shadow: 0 0 18px rgba(100, 220, 255, 0.55);
+}
+
+.tv-cinema-title {
+  max-width: 690px;
+  margin: 0;
+  color: #fff !important;
+  font-size: clamp(2.7rem, 5vw, 5.05rem);
+  font-weight: 860;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+  text-shadow: 0 12px 42px rgba(0, 0, 0, 0.42);
+}
+
+.tv-cinema-description {
+  max-width: 600px;
+  margin: 1.35rem 0 1.55rem;
+  color: rgba(239, 247, 255, 0.78) !important;
+  font-size: 0.98rem;
+  line-height: 1.72;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.tv-cinema-highlight-row {
+  display: flex;
+  align-items: stretch;
+  gap: 1.65rem;
+  margin-bottom: 1.45rem;
+}
+
+.tv-cinema-highlight {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+}
+
+.tv-cinema-highlight strong {
+  color: #fff !important;
+  font-size: clamp(3.15rem, 5.4vw, 5.05rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.065em;
+}
+
+.tv-cinema-highlight span {
+  max-width: 120px;
+  padding-bottom: 0.15rem;
+  color: var(--tv-cyan) !important;
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.3;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.tv-cinema-plan-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 180px;
+  padding-left: 1.6rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.tv-cinema-plan-summary small {
+  margin-bottom: 0.28rem;
+  color: rgba(255, 255, 255, 0.52) !important;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tv-cinema-plan-summary strong {
+  color: #fff !important;
+  font-size: 1.16rem;
+  line-height: 1.25;
+}
+
+.tv-cinema-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.68rem 1.2rem;
+  margin: 0 0 1.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tv-cinema-features li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.84) !important;
+  font-size: 0.8rem;
+  font-weight: 680;
+}
+
+.tv-cinema-features svg {
+  color: var(--tv-cyan);
+  filter: drop-shadow(0 0 8px rgba(100, 220, 255, 0.45));
+}
+
+.tv-cinema-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.tv-cinema-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: 1.3rem;
+}
+
+.tv-cinema-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(12px);
+}
+
+.tv-cinema-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+.tv-cinema-rail {
+  position: absolute;
+  top: 50%;
+  right: max(24px, calc((100vw - 1320px) / 2));
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.72rem;
+  transform: translateY(-50%);
+}
+
+.tv-cinema-rail-button {
+  display: grid;
+  grid-template-columns: auto 44px;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0;
+  border: 0;
+  color: rgba(255, 255, 255, 0.46);
+  background: transparent;
+  text-align: right;
+  transition: color 0.25s ease;
+}
+
+.tv-cinema-rail-button span:first-child {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #fff !important;
+  font-size: 0.7rem;
+  font-weight: 760;
+  white-space: nowrap;
+  transition: max-width 0.35s ease, opacity 0.25s ease;
+}
+
+.tv-cinema-rail-button span:last-child {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: #fff !important;
+  background: rgba(3, 17, 31, 0.22);
+  font-size: 0.74rem;
+  font-weight: 850;
+  backdrop-filter: blur(9px);
+  transition: all 0.3s ease;
+}
+
+.tv-cinema-rail-button:hover span:first-child,
+.tv-cinema-rail-button.active span:first-child {
+  max-width: 210px;
+  opacity: 1;
+}
+
+.tv-cinema-rail-button.active span:last-child {
+  border-color: var(--tv-cyan);
+  background: linear-gradient(145deg, rgba(22, 140, 255, 0.95), rgba(100, 220, 255, 0.48));
+  box-shadow: 0 0 32px rgba(43, 199, 240, 0.3);
+}
+
+.tv-cinema-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(3, 17, 31, 0.48);
+  backdrop-filter: blur(17px);
+}
+
+.tv-cinema-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 86px;
+  gap: 1.5rem;
+}
+
+.tv-cinema-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.55rem;
+}
+
+.tv-cinema-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  color: rgba(255, 255, 255, 0.77) !important;
+  font-size: 0.76rem;
+  font-weight: 720;
+}
+
+.tv-cinema-trust-item svg {
+  color: var(--tv-cyan);
+}
+
+.tv-cinema-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.78rem;
+}
+
+.tv-cinema-arrow {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.tv-cinema-arrow:hover {
+  transform: translateY(-2px);
+  background: rgba(22, 140, 255, 0.76);
+}
+
+.tv-cinema-progress {
+  width: 150px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.tv-cinema-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--tv-blue), var(--tv-cyan));
+  animation: tvHeroProgress 7s linear both;
+}

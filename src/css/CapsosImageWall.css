@@ -1,0 +1,1502 @@
+/* ==========================================================
+   CAPSOS IMAGE WALL
+   Mosaico dinámico de fotografías
+========================================================== */
+
+.capsos-image-wall {
+  --capsos-wall-primary: var(--capsos-primary, #0878d1);
+  --capsos-wall-secondary: var(--capsos-secondary, #29b7eb);
+  --capsos-wall-navy: var(--capsos-navy, #06142f);
+  --capsos-wall-dark: #020916;
+  --capsos-wall-text: #ffffff;
+  --capsos-wall-muted: rgba(255, 255, 255, 0.72);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: clamp(70px, 8vw, 118px) 0;
+  overflow: hidden;
+  color: var(--capsos-wall-text);
+  background:
+    radial-gradient(
+      circle at 12% 20%,
+      rgba(41, 183, 235, 0.16),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgba(8, 120, 209, 0.2),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      #020916 0%,
+      #06142f 48%,
+      #072747 100%
+    );
+}
+
+.capsos-image-wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      rgba(41, 183, 235, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(41, 183, 235, 0.045) 1px,
+      transparent 1px
+    );
+  background-size: 54px 54px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.capsos-image-wall::after {
+  content: "";
+  position: absolute;
+  top: -280px;
+  left: 50%;
+  z-index: -1;
+  width: min(900px, 90vw);
+  height: min(900px, 90vw);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(41, 183, 235, 0.17),
+    transparent 66%
+  );
+  filter: blur(20px);
+  transform: translateX(-50%);
+  animation: capsosWallAura 10s ease-in-out infinite alternate;
+}
+
+.capsos-image-wall-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================
+   ENCABEZADO
+========================================================== */
+
+.capsos-wall-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.capsos-wall-heading > div {
+  max-width: 850px;
+}
+
+.capsos-wall-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 15px;
+  padding: 8px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.capsos-wall-eyebrow i {
+  color: var(--capsos-wall-secondary);
+}
+
+.capsos-wall-heading h2 {
+  max-width: 900px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2.2rem, 5vw, 4.8rem);
+  font-weight: 850;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.capsos-wall-heading h2 span {
+  color: var(--capsos-wall-secondary);
+  text-shadow: 0 0 28px rgba(41, 183, 235, 0.28);
+}
+
+.capsos-wall-heading p {
+  max-width: 730px;
+  margin: 20px 0 0;
+  color: var(--capsos-wall-muted);
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.capsos-wall-control {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 11px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 12px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 0.83rem;
+  font-weight: 750;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.capsos-wall-control:hover {
+  border-color: rgba(41, 183, 235, 0.48);
+  background: rgba(41, 183, 235, 0.12);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.capsos-wall-control:focus-visible {
+  outline: 3px solid rgba(41, 183, 235, 0.4);
+  outline-offset: 4px;
+}
+
+/* ==========================================================
+   CONTENEDOR DEL MOSAICO
+========================================================== */
+
+/* ==========================================================
+   CONTENEDOR DEL MOSAICO
+   Ancho completo y mayor espacio para fotografías
+========================================================== */
+
+.capsos-mosaic-shell {
+  position: relative;
+
+  /* Rompe el límite del .container */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
+  height: clamp(440px, 42vw, 620px);
+  padding: 4px;
+
+  overflow: hidden;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  border-right: 0;
+  border-left: 0;
+
+  border-radius: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 38px 90px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.capsos-mosaic-shell::before {
+  content: "";
+
+  position: absolute;
+  inset: -35%;
+
+  pointer-events: none;
+
+  background:
+    conic-gradient(
+      from 180deg,
+      transparent,
+      rgba(41, 183, 235, 0.09),
+      transparent 35%,
+      rgba(8, 120, 209, 0.08),
+      transparent 70%
+    );
+
+  animation:
+    capsosShellRotation
+    24s
+    linear
+    infinite;
+}
+
+/* ==========================================================
+   GRID MÁS GRANDE
+   14 columnas × 5 filas
+========================================================== */
+
+.capsos-mosaic-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  /*
+    14 columnas generan fotografías
+    considerablemente más pequeñas.
+  */
+  grid-template-columns:
+    repeat(14, minmax(0, 1fr));
+
+  /*
+    Cinco filas con el mismo tamaño.
+  */
+  grid-template-rows:
+    repeat(5, minmax(0, 1fr));
+
+  grid-auto-flow: dense;
+
+  width: 100%;
+  height: 100%;
+
+  gap: 4px;
+}
+
+/* ==========================================================
+   FOTOGRAFÍAS MÁS PEQUEÑAS
+========================================================== */
+
+.capsos-mosaic-tile {
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 4px;
+}
+
+.capsos-mosaic-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ==========================================================
+   LOGO CENTRAL
+========================================================== */
+
+.capsos-mosaic-logo {
+  position: relative;
+  z-index: 12;
+  grid-column: 3 / span 2;
+  grid-row: 2 / span 2;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(41, 183, 235, 0.34);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(41, 183, 235, 0.2),
+      transparent 50%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(2, 9, 22, 0.96),
+      rgba(6, 35, 65, 0.94)
+    );
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.38),
+    0 0 38px rgba(41, 183, 235, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.capsos-mosaic-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      rgba(41, 183, 235, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(41, 183, 235, 0.055) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle, #000, transparent 76%);
+}
+
+.capsos-mosaic-logo::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -75%;
+  width: 42%;
+  height: 170%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: capsosLogoShine 5.8s ease-in-out infinite;
+}
+
+.capsos-logo-panel {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 42px);
+  text-align: center;
+}
+
+.capsos-logo-image {
+  display: block;
+  width: min(78%, 260px);
+  max-height: 58%;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 14px 24px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 0 20px rgba(41, 183, 235, 0.16));
+  animation: capsosLogoFloat 5s ease-in-out infinite;
+}
+
+.capsos-logo-fallback {
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 4.4rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+.capsos-logo-panel > span {
+  margin-top: 17px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.68rem, 1vw, 0.82rem);
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.capsos-logo-ring {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(41, 183, 235, 0.32);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.capsos-logo-ring-one {
+  width: 160px;
+  height: 160px;
+  animation: capsosRingPulse 3.2s ease-out infinite;
+}
+
+.capsos-logo-ring-two {
+  width: 230px;
+  height: 230px;
+  animation: capsosRingPulse 3.2s 1.3s ease-out infinite;
+}
+
+/* ==========================================================
+   FOTOGRAFÍAS
+========================================================== */
+
+.capsos-mosaic-tile {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 17px;
+  background: #06142f;
+  opacity: 1;
+  transform: translateZ(0) scale(1);
+  box-shadow: 0 9px 26px rgba(0, 0, 0, 0.18);
+  transition:
+    opacity 0.46s ease,
+    transform 0.46s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.capsos-mosaic-tile:nth-of-type(4n + 1) {
+  border-radius: 22px 8px 22px 8px;
+}
+
+.capsos-mosaic-tile:nth-of-type(5n + 2) {
+  border-radius: 8px 22px 8px 22px;
+}
+
+.capsos-mosaic-tile.is-changing {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.capsos-mosaic-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter:
+    brightness(0.78)
+    contrast(1.08)
+    saturate(1.04);
+  transform: scale(1.055);
+  animation:
+    capsosImageReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
+    capsosImageDrift var(--motion-duration) ease-in-out
+      var(--motion-delay) infinite alternate;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+  will-change: transform, filter;
+}
+
+.capsos-mosaic-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 9, 22, 0.03),
+      rgba(2, 9, 22, 0.12) 48%,
+      rgba(2, 9, 22, 0.64)
+    ),
+    linear-gradient(
+      135deg,
+      rgba(41, 183, 235, 0.12),
+      transparent 45%
+    );
+  transition: opacity 0.4s ease;
+}
+
+.capsos-mosaic-tile::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.5;
+  transition:
+    opacity 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.capsos-tile-light {
+  position: absolute;
+  top: -35%;
+  left: -85%;
+  z-index: 4;
+  width: 42%;
+  height: 180%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.24),
+    transparent
+  );
+  opacity: 0;
+  transform: rotate(18deg);
+  transition:
+    left 0.9s ease,
+    opacity 0.3s ease;
+}
+
+.capsos-mosaic-tile figcaption {
+  position: absolute;
+  right: 13px;
+  bottom: 12px;
+  left: 13px;
+  z-index: 5;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.capsos-mosaic-tile:hover,
+.capsos-mosaic-tile:focus-within {
+  z-index: 8;
+  border-color: rgba(41, 183, 235, 0.44);
+  box-shadow:
+    0 19px 38px rgba(0, 0, 0, 0.32),
+    0 0 25px rgba(41, 183, 235, 0.11);
+  transform: translateY(-5px) scale(1.025);
+}
+
+.capsos-mosaic-tile:hover .capsos-mosaic-image,
+.capsos-mosaic-tile:focus-within .capsos-mosaic-image {
+  filter:
+    brightness(0.96)
+    contrast(1.11)
+    saturate(1.16);
+  transform: scale(1.12);
+}
+
+.capsos-mosaic-tile:hover::after,
+.capsos-mosaic-tile:focus-within::after {
+  border-color: rgba(41, 183, 235, 0.35);
+  opacity: 1;
+  transform: scale(0.985);
+}
+
+.capsos-mosaic-tile:hover .capsos-tile-light,
+.capsos-mosaic-tile:focus-within .capsos-tile-light {
+  left: 145%;
+  opacity: 1;
+}
+
+.capsos-mosaic-tile:hover figcaption,
+.capsos-mosaic-tile:focus-within figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================
+   ESTADO SIN IMÁGENES
+========================================================== */
+
+.capsos-gallery-empty {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+.capsos-gallery-empty i {
+  color: var(--capsos-wall-secondary);
+  font-size: 2.2rem;
+}
+
+.capsos-gallery-empty strong {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.capsos-gallery-empty span {
+  color: var(--capsos-wall-muted);
+}
+
+.capsos-gallery-empty code {
+  margin-left: 5px;
+  color: var(--capsos-wall-secondary);
+}
+
+/* ==========================================================
+   ANIMACIONES
+========================================================== */
+
+@keyframes capsosImageReveal {
+  from {
+    opacity: 0;
+    filter:
+      brightness(0.45)
+      blur(5px)
+      saturate(0.7);
+    transform: scale(1.16);
+  }
+
+  to {
+    opacity: 1;
+    filter:
+      brightness(0.78)
+      blur(0)
+      saturate(1.04);
+    transform: scale(1.055);
+  }
+}
+
+@keyframes capsosImageDrift {
+  0% {
+    transform: scale(1.055) translate3d(-1.1%, -0.7%, 0);
+  }
+
+  100% {
+    transform: scale(1.095) translate3d(1.1%, 0.7%, 0);
+  }
+}
+
+@keyframes capsosLogoFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-7px) scale(1.02);
+  }
+}
+
+@keyframes capsosLogoShine {
+  0%,
+  58% {
+    left: -75%;
+  }
+
+  78%,
+  100% {
+    left: 145%;
+  }
+}
+
+@keyframes capsosRingPulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes capsosWallAura {
+  from {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+@keyframes capsosShellRotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 991.98px) {
+  .capsos-wall-heading {
+    align-items: flex-start;
+  }
+
+  .capsos-mosaic-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: clamp(105px, 20vw, 170px);
+  }
+
+  .capsos-mosaic-logo {
+    grid-column: 2 / span 2;
+    grid-row: 3 / span 2;
+  }
+}
+
+/* ==========================================================
+   MÓVIL
+========================================================== */
+
+@media (max-width: 767.98px) {
+  .capsos-image-wall {
+    padding: 66px 0;
+  }
+
+  .capsos-wall-heading {
+    flex-direction: column;
+    margin-bottom: 28px;
+  }
+
+  .capsos-wall-control {
+    align-self: flex-start;
+  }
+
+  .capsos-mosaic-shell {
+    padding: 8px;
+    border-radius: 22px;
+  }
+
+  .capsos-mosaic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: clamp(92px, 29vw, 145px);
+    gap: 7px;
+  }
+
+  .capsos-mosaic-logo {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 2;
+    border-radius: 18px;
+  }
+
+  .capsos-logo-image {
+    width: min(66%, 230px);
+    max-height: 52%;
+  }
+
+  .capsos-mosaic-tile,
+  .capsos-mosaic-tile:nth-of-type(4n + 1),
+  .capsos-mosaic-tile:nth-of-type(5n + 2) {
+    border-radius: 12px;
+  }
+
+  .capsos-mosaic-tile::after {
+    inset: 5px;
+    border-radius: 8px;
+  }
+
+  .capsos-mosaic-tile figcaption {
+    display: none;
+  }
+}
+
+/* ==========================================================
+   MÓVILES PEQUEÑOS
+========================================================== */
+
+@media (max-width: 480px) {
+  .capsos-image-wall {
+    padding: 56px 0;
+  }
+
+  .capsos-wall-heading h2 {
+    font-size: clamp(2rem, 11vw, 2.85rem);
+  }
+
+  .capsos-wall-control span {
+    display: none;
+  }
+
+  .capsos-wall-control {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .capsos-mosaic-grid {
+    grid-auto-rows: clamp(82px, 28vw, 120px);
+  }
+
+  .capsos-logo-panel > span {
+    margin-top: 10px;
+    font-size: 0.58rem;
+  }
+}
+
+/* ==========================================================
+   ACCESIBILIDAD Y REDUCCIÓN DE MOVIMIENTO
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .capsos-image-wall::after,
+  .capsos-mosaic-shell::before,
+  .capsos-logo-image,
+  .capsos-logo-ring,
+  .capsos-mosaic-logo::after,
+  .capsos-mosaic-image {
+    animation: none !important;
+  }
+
+  .capsos-mosaic-tile,
+  .capsos-mosaic-image,
+  .capsos-mosaic-tile::after,
+  .capsos-tile-light,
+  .capsos-mosaic-tile figcaption,
+  .capsos-wall-control {
+    transition: none !important;
+  }
+}
+
+/* Ocultar completamente el componente en móviles */
+@media (max-width: 767.98px) {
+  .capsos-image-wall {
+    display: none;
+  }
+}
+
+
+@media (max-width: 991.98px) {
+  .capsos-image-wall {
+    display: none;
+  }
+}
+
+/* =========================================================
+   CAPSOS IMAGE WALL
+   INTERACCIÓN PARA ABRIR GALERÍA
+========================================================= */
+
+.capsos-mosaic-tile {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   IMAGEN
+--------------------------------------------------------- */
+
+.capsos-mosaic-image {
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease,
+    opacity 0.2s ease;
+}
+
+/* ---------------------------------------------------------
+   HOVER
+--------------------------------------------------------- */
+
+.capsos-mosaic-tile:hover .capsos-mosaic-image {
+  transform: scale(1.07);
+  filter: brightness(0.82);
+}
+
+/* =========================================================
+   ICONO AMPLIAR
+========================================================= */
+
+.capsos-mosaic-zoom {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.75);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    rgba(0, 0, 0, 0.48);
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.35);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  z-index: 5;
+}
+
+.capsos-mosaic-zoom i {
+  font-size: 16px;
+}
+
+.capsos-mosaic-tile:hover
+.capsos-mosaic-zoom {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.capsos-lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    70px 90px 60px;
+
+  animation:
+    capsosLightboxFadeIn
+    0.3s ease;
+}
+
+/* =========================================================
+   FONDO
+========================================================= */
+
+.capsos-lightbox-background {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(3, 8, 15, 0.94);
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  z-index: -1;
+}
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.capsos-lightbox-content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   FIGURE
+========================================================= */
+
+.capsos-lightbox-figure {
+  position: relative;
+
+  margin: 0;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: auto;
+
+  animation:
+    capsosLightboxImageIn
+    0.35s ease;
+}
+
+/* =========================================================
+   IMAGEN AMPLIADA
+========================================================= */
+
+.capsos-lightbox-image {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width:
+    min(1500px, 100%);
+
+  max-height:
+    calc(100vh - 170px);
+
+  object-fit: contain;
+
+  border-radius: 12px;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.capsos-lightbox-caption {
+  margin-top: 14px;
+
+  max-width: 800px;
+
+  color:
+    rgba(255, 255, 255, 0.88);
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.02em;
+
+  text-align: center;
+}
+
+/* =========================================================
+   BOTÓN CERRAR
+========================================================= */
+
+.capsos-lightbox-close {
+  position: absolute;
+
+  top: 22px;
+  right: 25px;
+
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, 0.1);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.18);
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+
+  z-index: 20;
+}
+
+.capsos-lightbox-close:hover {
+  background:
+    rgba(255, 255, 255, 0.2);
+
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+.capsos-lightbox-counter {
+  position: absolute;
+
+  top: 30px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  color:
+    rgba(255, 255, 255, 0.85);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  background:
+    rgba(0, 0, 0, 0.3);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  border-radius: 100px;
+
+  padding:
+    8px 16px;
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  z-index: 20;
+}
+
+/* =========================================================
+   BOTONES DE NAVEGACIÓN
+========================================================= */
+
+.capsos-lightbox-navigation {
+  position: absolute;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 58px;
+  height: 58px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, 0.09);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+
+  cursor: pointer;
+
+  font-size: 20px;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+
+  z-index: 20;
+}
+
+.capsos-lightbox-navigation:hover {
+  background:
+    rgba(255, 255, 255, 0.2);
+}
+
+.capsos-lightbox-previous {
+  left: 22px;
+}
+
+.capsos-lightbox-next {
+  right: 22px;
+}
+
+.capsos-lightbox-previous:hover {
+  transform:
+    translateY(-50%)
+    translateX(-4px);
+}
+
+.capsos-lightbox-next:hover {
+  transform:
+    translateY(-50%)
+    translateX(4px);
+}
+
+/* =========================================================
+   AYUDA INFERIOR
+========================================================= */
+
+.capsos-lightbox-help {
+  position: absolute;
+
+  bottom: 18px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color:
+    rgba(255, 255, 255, 0.46);
+
+  font-size: 11px;
+
+  letter-spacing: 0.04em;
+}
+
+.capsos-lightbox-help span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.capsos-lightbox-help i {
+  font-size: 9px;
+}
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes capsosLightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes capsosLightboxImageIn {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+  .capsos-lightbox {
+    padding:
+      65px 65px 55px;
+  }
+
+  .capsos-lightbox-navigation {
+    width: 48px;
+    height: 48px;
+
+    font-size: 17px;
+  }
+
+  .capsos-lightbox-previous {
+    left: 10px;
+  }
+
+  .capsos-lightbox-next {
+    right: 10px;
+  }
+
+  .capsos-lightbox-image {
+    max-height:
+      calc(100vh - 150px);
+  }
+}
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .capsos-lightbox {
+    padding:
+      70px 12px
+      75px;
+  }
+
+  .capsos-lightbox-background {
+    background:
+      rgba(2, 6, 11, 0.97);
+
+    backdrop-filter:
+      blur(8px);
+
+    -webkit-backdrop-filter:
+      blur(8px);
+  }
+
+  .capsos-lightbox-image {
+    max-width: 100%;
+
+    max-height:
+      calc(100vh - 160px);
+
+    border-radius: 8px;
+  }
+
+  .capsos-lightbox-caption {
+    margin-top: 10px;
+
+    padding:
+      0 12px;
+
+    font-size: 12px;
+  }
+
+  .capsos-lightbox-close {
+    top: 14px;
+    right: 14px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+  }
+
+  .capsos-lightbox-counter {
+    top: 18px;
+
+    font-size: 11px;
+
+    padding:
+      7px 13px;
+  }
+
+  /*
+   * En móvil las flechas quedan
+   * en la parte inferior para
+   * no tapar la fotografía.
+   */
+
+  .capsos-lightbox-navigation {
+    top: auto;
+
+    bottom: 15px;
+
+    transform: none;
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 16px;
+  }
+
+  .capsos-lightbox-previous {
+    left:
+      calc(
+        50% - 58px
+      );
+  }
+
+  .capsos-lightbox-next {
+    right:
+      calc(
+        50% - 58px
+      );
+  }
+
+  .capsos-lightbox-previous:hover,
+  .capsos-lightbox-next:hover {
+    transform: none;
+  }
+
+  .capsos-lightbox-help {
+    display: none;
+  }
+
+  .capsos-mosaic-zoom {
+    width: 36px;
+    height: 36px;
+
+    opacity: 0.75;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  .capsos-mosaic-zoom i {
+    font-size: 13px;
+  }
+}

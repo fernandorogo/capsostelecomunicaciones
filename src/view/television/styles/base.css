@@ -1,0 +1,14 @@
+.tv-premium-page {
+  --tv-navy: #03111f;
+  --tv-navy-soft: #071f35;
+  --tv-blue: #168cff;
+  --tv-cyan: #64dcff;
+  --tv-ink: #071b2d;
+  --tv-copy: #607181;
+  --tv-surface: #f5f9fc;
+  overflow-x: hidden;
+}
+
+.tv-premium-page * {
+  box-sizing: border-box;
+}

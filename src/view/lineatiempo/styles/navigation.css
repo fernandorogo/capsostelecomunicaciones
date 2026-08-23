@@ -1,0 +1,108 @@
+/* NAVEGACIÓN */
+
+.capsos-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid rgba(11, 94, 168, 0.11);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 34px rgba(16, 37, 54, 0.065);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.capsos-nav-inner {
+  width: min(var(--capsos-container), calc(100% - 40px));
+  min-height: 74px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.capsos-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--capsos-blue-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.capsos-brand::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 3px solid var(--capsos-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--capsos-blue-soft);
+}
+
+.capsos-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.capsos-nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.capsos-nav-links button {
+  position: relative;
+  min-height: 42px;
+  padding: 12px 15px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--capsos-muted);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.capsos-nav-links button::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  bottom: 7px;
+  left: 15px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--capsos-blue), var(--capsos-cyan));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.capsos-nav-links button:hover {
+  background: var(--capsos-blue-soft);
+  color: var(--capsos-blue);
+}
+
+.capsos-nav-links button.active {
+  background: linear-gradient(
+    135deg,
+    rgba(11, 94, 168, 0.1),
+    rgba(91, 192, 222, 0.08)
+  );
+  color: var(--capsos-blue-dark);
+}
+
+.capsos-nav-links button.active::after {
+  transform: scaleX(1);
+}
+

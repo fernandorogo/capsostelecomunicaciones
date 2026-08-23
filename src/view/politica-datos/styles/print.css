@@ -1,0 +1,67 @@
+@media print {
+  @page {
+    size:A4;
+    margin:16mm;
+  }
+
+  body {
+    background:#fff !important;
+  }
+
+  .data-policy-page {
+    padding:0;
+    background:#fff !important;
+  }
+
+  .data-policy-shell {
+    width:100%;
+    display:block;
+  }
+
+  .data-policy-sidebar {
+    position:static;
+    margin-bottom:18px;
+  }
+
+  .data-policy-sidebar__panel {
+    max-height:none;
+    padding:20px;
+    border:1px solid #8ca5b6;
+    color:#102536 !important;
+    background:#fff !important;
+    box-shadow:none !important;
+  }
+
+  .data-policy-sidebar__panel * {
+    color:#102536 !important;
+  }
+
+  .data-policy-sidebar__nav,
+  .data-policy-actions,
+  .data-policy-section__top {
+    display:none !important;
+  }
+
+  .data-policy-document {
+    border:0;
+    box-shadow:none;
+  }
+
+  .data-policy-header,
+  .data-policy-body {
+    padding-right:0;
+    padding-left:0;
+  }
+
+  .data-policy-header {
+    background:#fff !important;
+  }
+
+  .data-policy-section,
+  .data-policy-information-card,
+  .data-policy-summary-card,
+  .data-policy-related-card {
+    break-inside:avoid;
+    box-shadow:none;
+  }
+}

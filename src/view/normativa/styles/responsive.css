@@ -1,0 +1,384 @@
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* PORTÁTILES / ESCRITORIO MEDIO */
+@media (max-width: 1199.98px) {
+  .normativa-hero__rail {
+    right: 18px;
+  }
+
+  .normativa-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* TABLET */
+@media (max-width: 991.98px) {
+  .normativa-hero {
+    min-height: 800px;
+  }
+
+  .normativa-hero__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 17, 31, 0.99) 0%,
+        rgba(3, 17, 31, 0.92) 58%,
+        rgba(3, 17, 31, 0.48) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(3, 17, 31, 0.2) 0%,
+        rgba(3, 17, 31, 0.38) 55%,
+        rgba(3, 17, 31, 0.97) 100%
+      );
+  }
+
+  .normativa-hero__rail {
+    display: none;
+  }
+
+  .normativa-hero__copy {
+    width: min(720px, 100%);
+  }
+
+  .normativa-library__heading,
+  .normativa-notice-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .normativa-library__heading {
+    gap: 1.4rem;
+  }
+
+  .normativa-filter-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .normativa-categories {
+    justify-content: flex-start;
+  }
+}
+
+/* MÓVIL / TABLET PEQUEÑA */
+@media (max-width: 767.98px) {
+  .normativa-hero {
+    min-height: 850px;
+  }
+
+  .normativa-hero__media img {
+    object-position: 62% center !important;
+  }
+
+  .normativa-hero__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 17, 31, 0.34) 0%,
+        rgba(3, 17, 31, 0.76) 32%,
+        rgba(3, 17, 31, 0.96) 66%,
+        #03111f 100%
+      );
+  }
+
+  .normativa-hero__grid {
+    opacity: 0.06;
+
+    mask-image:
+      linear-gradient(
+        180deg,
+        #000,
+        transparent 76%
+      );
+  }
+
+  .normativa-hero__content {
+    align-items: flex-end;
+
+    min-height: 770px;
+
+    padding-top: 6rem;
+    padding-bottom: 9.5rem;
+  }
+
+  .normativa-hero__copy {
+    width: 100%;
+  }
+
+  .normativa-hero__topline {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.55rem;
+  }
+
+  .normativa-hero__counter {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .normativa-hero__title {
+    max-width: 100%;
+
+    font-size:
+      clamp(2.5rem, 12vw, 4.1rem);
+
+    line-height: 0.97;
+  }
+
+  .normativa-hero__description {
+    margin: 1.1rem 0 1.3rem;
+
+    font-size: 0.92rem;
+
+    line-height: 1.65;
+  }
+
+  .normativa-hero__metric-card {
+    margin-bottom: 1.2rem;
+  }
+
+  .normativa-hero__features {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 0.6rem;
+  }
+
+  .normativa-hero__actions {
+    width: 100%;
+  }
+
+  .normativa-hero__actions a {
+    width: 100%;
+  }
+
+  .normativa-hero__bottom-inner {
+    min-height: 84px;
+  }
+
+  .normativa-hero__trust {
+    display: none;
+  }
+
+  .normativa-hero__controls {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .normativa-hero__progress {
+    flex: 1;
+
+    width: auto;
+    max-width: 190px;
+  }
+
+  .normativa-library {
+    padding: 5rem 0;
+  }
+
+  .normativa-library__heading h2 {
+    font-size:
+      clamp(2.15rem, 9vw, 3.2rem);
+  }
+
+  .normativa-categories {
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    padding-bottom: 0.3rem;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .normativa-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .normativa-category-button {
+    flex: 0 0 auto;
+  }
+
+  .normativa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .normativa-card {
+    min-height: auto;
+  }
+
+  .normativa-notice-section {
+    padding: 5rem 0;
+  }
+}
+
+/* MÓVIL */
+@media (max-width: 575.98px) {
+  .normativa-hero {
+    min-height: 810px;
+  }
+
+  .normativa-hero__content {
+    min-height: 735px;
+
+    padding-top: 5rem;
+    padding-bottom: 8.5rem;
+  }
+
+  .normativa-hero__title {
+    font-size:
+      clamp(2.2rem, 11.5vw, 3.25rem);
+  }
+
+  .normativa-hero__metric-card {
+    width: 100%;
+  }
+
+  .normativa-hero__actions {
+    flex-direction: column;
+  }
+
+  .normativa-filter-panel {
+    margin-right: -0.1rem;
+    margin-left: -0.1rem;
+
+    padding: 0.75rem;
+
+    border-radius: 17px;
+  }
+
+  .normativa-results {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.45rem;
+  }
+
+  .normativa-card {
+    padding: 1.2rem;
+
+    border-radius: 20px;
+  }
+
+  .normativa-card__top {
+    align-items: flex-start;
+  }
+
+  .normativa-card__status {
+    max-width: 150px;
+  }
+
+  .normativa-card__meta {
+    grid-template-columns: 1fr;
+  }
+
+  .normativa-notice-item {
+    grid-template-columns:
+      46px
+      minmax(0, 1fr);
+
+    gap: 0.8rem;
+  }
+
+  .normativa-notice-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
+  }
+}
+
+/* MÓVIL MUY ESTRECHO */
+@media (max-width: 379.98px) {
+  .normativa-hero__title {
+    font-size: 2.05rem;
+  }
+
+  .normativa-hero__metric {
+    align-items: center;
+  }
+
+  .normativa-hero__metric strong {
+    font-size: 1.85rem;
+  }
+
+  .normativa-hero__metric span {
+    max-width: none;
+
+    font-size: 0.62rem;
+  }
+
+  .normativa-card__identity {
+    align-items: flex-start;
+  }
+
+  .normativa-card__action {
+    grid-template-columns:
+      34px
+      minmax(0, 1fr)
+      18px;
+
+    gap: 0.5rem;
+  }
+
+  .normativa-card__action-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* PANTALLAS GRANDES */
+@media (min-width: 1600px) {
+  .normativa-hero__content {
+    max-width: 1420px;
+  }
+
+  .normativa-library > .container,
+  .normativa-notice-layout {
+    max-width: 1380px;
+  }
+
+  .normativa-grid {
+    gap: 1.35rem;
+  }
+}
+
+/* PANTALLAS DE BAJA ALTURA */
+@media
+  (max-height: 720px)
+  and (min-width: 768px) {
+
+  .normativa-hero {
+    min-height: 690px;
+  }
+
+  .normativa-hero__content {
+    min-height: 620px;
+
+    padding-top: 6.5rem;
+    padding-bottom: 7rem;
+  }
+
+  .normativa-hero__title {
+    font-size:
+      clamp(2.7rem, 4.4vw, 4.4rem);
+  }
+
+  .normativa-hero__description {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .normativa-hero__metric-card {
+    margin-bottom: 1rem;
+  }
+
+  .normativa-hero__features {
+    margin-bottom: 1.15rem;
+  }
+}

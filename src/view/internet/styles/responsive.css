@@ -1,0 +1,168 @@
+        @media (max-width: 1199.98px) {
+          .inet-plan-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .inet-story-mosaic {
+            grid-auto-rows: 220px;
+          }
+        }
+
+        @media (max-width: 991.98px) {
+          .inet-heading-grid,
+          .inet-experience-layout,
+          .inet-process-shell {
+            grid-template-columns: 1fr;
+          }
+
+          .inet-heading-grid,
+          .inet-experience-layout,
+          .inet-process-shell {
+            gap: 2.4rem;
+          }
+
+          .inet-experience-copy {
+            position: static;
+          }
+
+          .inet-story-mosaic {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: 330px;
+          }
+
+          .inet-story-card:nth-child(n) {
+            grid-column: auto;
+            grid-row: auto;
+          }
+
+          .inet-story-card:not(:first-child) .inet-story-content p {
+            display: block;
+          }
+
+          .inet-story-metrics {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .inet-story-metric:nth-child(3) {
+            border-left: 0;
+            border-top: 1px solid var(--inet-line);
+          }
+
+          .inet-story-metric:nth-child(4) {
+            border-top: 1px solid var(--inet-line);
+          }
+
+          .inet-audience-grid {
+            grid-template-columns: 1fr;
+            max-width: 760px;
+            margin: 0 auto;
+          }
+
+          .inet-audience-card {
+            min-height: 470px;
+          }
+        }
+
+        @media (max-width: 767.98px) {
+          .inet-story,
+          .inet-plans,
+          .inet-experience,
+          .inet-audiences {
+            padding: 5.2rem 0;
+          }
+
+          .inet-heading-grid h2,
+          .inet-experience-copy h2 {
+            font-size: clamp(2.25rem, 10vw, 3.35rem);
+          }
+
+          .inet-story-mosaic,
+          .inet-plan-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .inet-story-mosaic {
+            grid-auto-rows: 390px;
+          }
+
+          .inet-story-card:first-child .inet-story-content,
+          .inet-story-content {
+            padding: 1.35rem;
+          }
+
+          .inet-story-metrics {
+            grid-template-columns: 1fr;
+          }
+
+          .inet-story-metric:not(:first-child) {
+            border-left: 0;
+            border-top: 1px solid var(--inet-line);
+          }
+
+          .inet-plan-card {
+            min-height: auto;
+          }
+
+          .inet-plan-media {
+            height: 245px;
+            flex-basis: 245px;
+          }
+
+          .inet-experience-stats {
+            grid-template-columns: 1fr;
+          }
+
+          .inet-benefit-item {
+            grid-template-columns: 38px 48px minmax(0, 1fr);
+            gap: 0.75rem;
+          }
+
+          .inet-benefit-icon {
+            width: 48px;
+            height: 48px;
+          }
+
+          .inet-audience-card {
+            min-height: 500px;
+          }
+
+          .inet-process {
+            padding-bottom: 5rem;
+          }
+
+          .inet-process-shell {
+            padding: 2rem 1.25rem;
+            border-radius: 28px;
+          }
+
+          .inet-process-actions,
+          .inet-process-actions .btn,
+          .inet-final-actions,
+          .inet-final-actions .btn {
+            width: 100%;
+          }
+
+          .inet-final {
+            min-height: 620px;
+          }
+
+          .inet-final-content {
+            padding: 5.5rem 0;
+          }
+
+          .inet-final-content h2 {
+            font-size: clamp(2.6rem, 12vw, 4.1rem);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .inet-story-card,
+          .inet-story-card img,
+          .inet-plan-card,
+          .inet-plan-media img,
+          .inet-benefit-item,
+          .inet-audience-card,
+          .inet-audience-card img {
+            transition: none !important;
+          }
+        }

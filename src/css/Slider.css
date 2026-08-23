@@ -1,0 +1,1090 @@
+/* ======================================================
+   SLIDER PRINCIPAL CAPSOS
+====================================================== */
+
+.capsos-hero-slider {
+  --capsos-navy: #06142f;
+  --capsos-navy-dark: #030c20;
+  --capsos-navy-light: #0b2851;
+  --capsos-blue: #0878d1;
+  --capsos-blue-dark: #04599e;
+  --capsos-blue-light: #29b7eb;
+  --capsos-cyan: #72d2f4;
+  --capsos-white: #ffffff;
+  --capsos-muted: rgba(255, 255, 255, 0.84);
+
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--capsos-navy-dark);
+  border-top: 6px solid var(--capsos-blue);
+}
+
+/* Evita que estilos globales alteren el tamaño de los elementos */
+
+.capsos-hero-slider,
+.capsos-hero-slider *,
+.capsos-hero-slider *::before,
+.capsos-hero-slider *::after {
+  box-sizing: border-box;
+}
+
+/* ======================================================
+   CARRUSEL
+====================================================== */
+
+.capsos-carousel {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.capsos-carousel .carousel-inner {
+  width: 100%;
+  min-height: 690px;
+}
+
+.capsos-carousel .carousel-item {
+  position: relative;
+  width: 100%;
+  min-height: 690px;
+  overflow: hidden;
+}
+
+/* ======================================================
+   ESTRUCTURA DE CADA DIAPOSITIVA
+====================================================== */
+
+.capsos-slide-layout {
+  position: relative;
+  width: 100%;
+  min-height: 690px;
+  height: clamp(690px, 80vh, 820px);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--capsos-navy-dark);
+}
+
+/* ======================================================
+   VIDEO O IMAGEN A PANTALLA COMPLETA
+====================================================== */
+
+.capsos-slide-media-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--capsos-navy-dark);
+}
+
+.capsos-slide-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 690px;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+  filter:
+    saturate(0.96)
+    contrast(1.04)
+    brightness(0.86);
+  transition:
+    transform 9s ease,
+    filter 0.6s ease;
+}
+
+/* Movimiento lento y profesional */
+
+.carousel-item.active .capsos-slide-media {
+  transform: scale(1.075);
+}
+
+/* ======================================================
+   CAPA OSCURA GENERAL DEL FONDO
+====================================================== */
+
+.capsos-media-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /*
+    Degradado horizontal más progresivo.
+    Se reduce la concentración oscura en el centro para evitar
+    una franja marcada entre el texto y la multimedia.
+  */
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 12, 31, 0.56) 0%,
+      rgba(3, 12, 31, 0.42) 16%,
+      rgba(3, 12, 31, 0.29) 32%,
+      rgba(3, 12, 31, 0.18) 48%,
+      rgba(3, 12, 31, 0.09) 64%,
+      rgba(3, 12, 31, 0.035) 79%,
+      transparent 94%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.09) 0%,
+      rgba(0, 0, 0, 0.015) 48%,
+      rgba(0, 0, 0, 0.34) 100%
+    );
+}
+
+/* Viñeta suave para integrar todos los bordes */
+
+.capsos-media-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+
+  /*
+    Viñeta equilibrada.
+    Se reduce especialmente la sombra lateral izquierda para que
+    no se sume con el degradado del panel promocional.
+  */
+
+  box-shadow:
+    inset 0 0 125px rgba(0, 0, 0, 0.14),
+    inset 0 -120px 115px rgba(0, 0, 0, 0.22),
+    inset 90px 0 110px rgba(0, 0, 0, 0.035);
+}
+
+/* ======================================================
+   PANEL PROMOCIONAL IZQUIERDO
+====================================================== */
+
+.capsos-slide-copy-panel {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  width: min(52%, 850px);
+  min-width: 500px;
+  height: 100%;
+  padding:
+    75px
+    clamp(60px, 5.5vw, 110px)
+    125px
+    clamp(55px, 7vw, 145px);
+  color: #ffffff;
+
+  /*
+    El panel utiliza un solo degradado azul marino.
+    Se elimina el resplandor radial azul que podía concentrarse
+    en la mitad y formar una línea visual intensa.
+  */
+
+  background: linear-gradient(
+    90deg,
+    rgba(3, 12, 31, 0.995) 0%,
+    rgba(3, 12, 31, 0.985) 30%,
+    rgba(3, 12, 31, 0.94) 49%,
+    rgba(3, 12, 31, 0.79) 65%,
+    rgba(3, 12, 31, 0.56) 78%,
+    rgba(3, 12, 31, 0.29) 89%,
+    rgba(3, 12, 31, 0.09) 96%,
+    transparent 100%
+  );
+}
+
+/*
+  Difuminado adicional en la intersección.
+  Evita que el panel termine con un corte vertical.
+*/
+
+.capsos-slide-copy-panel::after {
+  position: absolute;
+  top: -8%;
+  right: -245px;
+  bottom: -8%;
+  z-index: 5;
+  width: 360px;
+  content: '';
+  pointer-events: none;
+
+  /*
+    Zona de transición más ancha y menos opaca.
+    Al ampliar el área y reducir la intensidad, el empalme deja
+    de verse como una línea vertical azul o negra.
+  */
+
+  background: linear-gradient(
+    90deg,
+    rgba(3, 12, 31, 0.47) 0%,
+    rgba(3, 12, 31, 0.33) 24%,
+    rgba(3, 12, 31, 0.19) 48%,
+    rgba(3, 12, 31, 0.085) 69%,
+    rgba(3, 12, 31, 0.025) 84%,
+    transparent 100%
+  );
+  opacity: 0.88;
+  filter: blur(36px);
+  transform: translateZ(0);
+}
+
+.capsos-slide-copy {
+  position: relative;
+  z-index: 7;
+  width: 100%;
+  max-width: 650px;
+  text-align: left;
+}
+
+/* ======================================================
+   CATEGORÍA SUPERIOR
+====================================================== */
+
+.capsos-slide-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 22px;
+  color: var(--capsos-cyan);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.capsos-category-line {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 2px;
+  border-radius: 20px;
+  background: var(--capsos-blue-light);
+  box-shadow: 0 0 15px rgba(41, 183, 235, 0.7);
+}
+
+/* ======================================================
+   TÍTULO PRINCIPAL
+====================================================== */
+
+.capsos-slide-title,
+.capsos-slide-copy h1,
+.capsos-slide-copy h2,
+.capsos-slide-copy h3 {
+  max-width: 650px;
+  margin: 0 0 24px;
+  color: #ffffff !important;
+  font-family: inherit;
+  font-size: clamp(3rem, 4.5vw, 5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  text-align: left;
+  text-wrap: balance;
+  text-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.4),
+    0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+/*
+  El segundo fragmento del título también queda blanco.
+  Se usa !important para evitar estilos globales en negro.
+*/
+
+.capsos-slide-title span,
+.capsos-slide-copy h1 span,
+.capsos-slide-copy h2 span,
+.capsos-slide-copy h3 span {
+  display: block;
+  color: #ffffff !important;
+  background: none !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ======================================================
+   DESCRIPCIÓN
+====================================================== */
+
+.capsos-slide-description {
+  max-width: 590px;
+  margin: 0 0 26px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
+  font-weight: 400;
+  line-height: 1.72;
+  text-align: left;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+/* ======================================================
+   CARACTERÍSTICAS
+====================================================== */
+
+.capsos-slide-features {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin: 0 0 33px;
+}
+
+.capsos-slide-features span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.91rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.capsos-slide-features i {
+  flex: 0 0 auto;
+  color: var(--capsos-blue-light);
+  font-size: 0.86rem;
+  filter: drop-shadow(
+    0 0 7px rgba(41, 183, 235, 0.45)
+  );
+}
+
+/* ======================================================
+   BOTONES
+====================================================== */
+
+.capsos-slide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 30px;
+}
+
+.capsos-slider-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 53px;
+  padding: 13px 24px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 0.91rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.capsos-slider-button:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.capsos-slider-button-primary,
+.capsos-slider-button-primary:link,
+.capsos-slider-button-primary:visited {
+  color: #ffffff !important;
+  background: linear-gradient(
+    135deg,
+    var(--capsos-blue-dark),
+    #0994dc
+  );
+  box-shadow:
+    0 14px 28px rgba(0, 103, 194, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.capsos-slider-button-primary:hover,
+.capsos-slider-button-primary:active {
+  color: #ffffff !important;
+  background: linear-gradient(
+    135deg,
+    #0878d1,
+    #12a9e8
+  );
+  box-shadow:
+    0 19px 38px rgba(0, 103, 194, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.capsos-slider-button-secondary,
+.capsos-slider-button-secondary:link,
+.capsos-slider-button-secondary:visited {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.capsos-slider-button-secondary:hover,
+.capsos-slider-button-secondary:active {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.capsos-slider-button:focus-visible {
+  outline: 3px solid rgba(77, 201, 242, 0.9);
+  outline-offset: 4px;
+}
+
+/* ======================================================
+   MENSAJES DE CONFIANZA
+====================================================== */
+
+.capsos-slide-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 25px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.capsos-slide-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.77rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.capsos-slide-trust i {
+  color: rgba(78, 201, 241, 0.92);
+}
+
+/* ======================================================
+   IDENTIDAD SOBRE EL FONDO
+====================================================== */
+
+.capsos-media-brand {
+  position: absolute;
+  right: 32px;
+  bottom: 30px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(2, 15, 32, 0.38);
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.capsos-media-brand-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #37caf5;
+  box-shadow: 0 0 12px rgba(55, 202, 245, 0.9);
+}
+
+/* ======================================================
+   ANIMACIÓN DEL CONTENIDO
+====================================================== */
+
+.capsos-slide-category,
+.capsos-slide-title,
+.capsos-slide-description,
+.capsos-slide-features,
+.capsos-slide-actions,
+.capsos-slide-trust {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.carousel-item.active .capsos-slide-category {
+  animation:
+    capsos-content-enter
+    0.65s
+    ease
+    forwards
+    0.12s;
+}
+
+.carousel-item.active .capsos-slide-title {
+  animation:
+    capsos-content-enter
+    0.7s
+    ease
+    forwards
+    0.2s;
+}
+
+.carousel-item.active .capsos-slide-description {
+  animation:
+    capsos-content-enter
+    0.7s
+    ease
+    forwards
+    0.29s;
+}
+
+.carousel-item.active .capsos-slide-features {
+  animation:
+    capsos-content-enter
+    0.7s
+    ease
+    forwards
+    0.37s;
+}
+
+.carousel-item.active .capsos-slide-actions {
+  animation:
+    capsos-content-enter
+    0.7s
+    ease
+    forwards
+    0.45s;
+}
+
+.carousel-item.active .capsos-slide-trust {
+  animation:
+    capsos-content-enter
+    0.7s
+    ease
+    forwards
+    0.53s;
+}
+
+@keyframes capsos-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   NAVEGACIÓN DEL SLIDER
+====================================================== */
+
+.capsos-slider-navigation {
+  position: absolute;
+  bottom: 38px;
+  left: clamp(55px, 7vw, 145px);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.capsos-slider-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(3, 12, 31, 0.38);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.capsos-slider-arrow:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.72);
+  background: var(--capsos-blue);
+  transform: scale(1.07);
+}
+
+.capsos-slider-arrow:focus-visible {
+  outline: 3px solid rgba(77, 201, 242, 0.85);
+  outline-offset: 3px;
+}
+
+/* Indicadores */
+
+.capsos-slider-indicators {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+}
+
+.capsos-slider-indicators [data-bs-target] {
+  width: 24px;
+  height: 3px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.32);
+  opacity: 1;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.capsos-slider-indicators [data-bs-target].active {
+  width: 48px;
+  background-color: var(--capsos-blue-light);
+  box-shadow: 0 0 12px rgba(41, 183, 235, 0.7);
+}
+
+/* ======================================================
+   INDICADOR DESCUBRE MÁS
+====================================================== */
+
+.capsos-slider-scroll {
+  position: absolute;
+  right: 38px;
+  bottom: 92px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.63rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.capsos-slider-scroll i {
+  animation:
+    capsos-scroll-arrow
+    1.5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes capsos-scroll-arrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ======================================================
+   PANTALLAS GRANDES
+====================================================== */
+
+@media (min-width: 1800px) {
+  .capsos-slide-copy-panel {
+    width: min(48%, 920px);
+    padding-left: clamp(120px, 8vw, 180px);
+  }
+
+  .capsos-slide-copy {
+    max-width: 700px;
+  }
+
+  .capsos-slide-title {
+    max-width: 700px;
+    font-size: clamp(4rem, 4.2vw, 5.5rem);
+  }
+
+  .capsos-slide-description {
+    max-width: 620px;
+  }
+
+  .capsos-slider-navigation {
+    left: clamp(120px, 8vw, 180px);
+  }
+}
+
+/* ======================================================
+   COMPUTADORES MEDIANOS
+====================================================== */
+
+@media (max-width: 1399.98px) {
+  .capsos-slide-copy-panel {
+    width: min(55%, 760px);
+    min-width: 470px;
+    padding-right: 75px;
+    padding-left: clamp(45px, 6vw, 90px);
+  }
+
+  .capsos-slide-title,
+  .capsos-slide-copy h1,
+  .capsos-slide-copy h2,
+  .capsos-slide-copy h3 {
+    font-size: clamp(2.8rem, 4.4vw, 4.35rem);
+  }
+
+  .capsos-slider-navigation {
+    left: clamp(45px, 6vw, 90px);
+  }
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 991.98px) {
+  .capsos-carousel .carousel-inner,
+  .capsos-carousel .carousel-item {
+    min-height: 710px;
+  }
+
+  .capsos-slide-layout {
+    min-height: 710px;
+    height: 760px;
+  }
+
+  .capsos-slide-media-panel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .capsos-slide-media {
+    width: 100%;
+    height: 100%;
+    min-height: 710px;
+  }
+
+  /*
+    En tablet el panel cubre todo el ancho,
+    pero el degradado permite ver el fondo.
+  */
+
+  .capsos-slide-copy-panel {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    padding:
+      100px
+      clamp(32px, 7vw, 75px)
+      125px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 12, 31, 0.96) 0%,
+        rgba(3, 12, 31, 0.91) 38%,
+        rgba(3, 12, 31, 0.67) 65%,
+        rgba(3, 12, 31, 0.34) 84%,
+        rgba(3, 12, 31, 0.12) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(3, 12, 31, 0.2) 0%,
+        rgba(3, 12, 31, 0.25) 50%,
+        rgba(3, 12, 31, 0.72) 100%
+      );
+  }
+
+  .capsos-slide-copy-panel::after {
+    display: none;
+  }
+
+  .capsos-slide-copy {
+    max-width: 610px;
+  }
+
+  .capsos-media-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 12, 31, 0.3) 0%,
+        rgba(3, 12, 31, 0.08) 60%,
+        transparent 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(3, 12, 31, 0.12),
+        rgba(3, 12, 31, 0.55)
+      );
+  }
+
+  .capsos-slider-navigation {
+    left: clamp(32px, 7vw, 75px);
+  }
+
+  .capsos-media-brand {
+    display: none;
+  }
+}
+
+/* ======================================================
+   MÓVIL
+====================================================== */
+
+@media (max-width: 767.98px) {
+  .capsos-hero-slider {
+    border-top-width: 4px;
+  }
+
+  .capsos-carousel .carousel-inner,
+  .capsos-carousel .carousel-item {
+    min-height: 690px;
+  }
+
+  .capsos-slide-layout {
+    height: 740px;
+    min-height: 690px;
+  }
+
+  .capsos-slide-media {
+    width: 100%;
+    height: 100%;
+    min-height: 690px;
+    object-position: center;
+    transform: scale(1.03);
+    filter:
+      saturate(0.92)
+      contrast(1.03)
+      brightness(0.76);
+  }
+
+  .carousel-item.active .capsos-slide-media {
+    transform: scale(1.08);
+  }
+
+  /*
+    En móvil el degradado es vertical:
+    la parte superior muestra más imagen y la parte inferior
+    se oscurece para permitir leer los textos.
+  */
+
+  .capsos-slide-copy-panel {
+    align-items: flex-end;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    padding:
+      90px
+      23px
+      115px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 12, 31, 0.2) 0%,
+        rgba(3, 12, 31, 0.34) 24%,
+        rgba(3, 12, 31, 0.62) 48%,
+        rgba(3, 12, 31, 0.9) 72%,
+        rgba(3, 12, 31, 0.99) 100%
+      );
+  }
+
+  .capsos-slide-copy-panel::after {
+    display: none;
+  }
+
+  .capsos-slide-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .capsos-media-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 12, 31, 0.1) 0%,
+        rgba(3, 12, 31, 0.14) 30%,
+        rgba(3, 12, 31, 0.42) 62%,
+        rgba(3, 12, 31, 0.7) 100%
+      );
+  }
+
+  .capsos-media-vignette {
+    box-shadow:
+      inset 0 0 80px rgba(0, 0, 0, 0.14),
+      inset 0 -120px 110px rgba(0, 0, 0, 0.24);
+  }
+
+  .capsos-slide-category {
+    gap: 9px;
+    margin-bottom: 14px;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  .capsos-category-line {
+    width: 25px;
+  }
+
+  .capsos-slide-title,
+  .capsos-slide-copy h1,
+  .capsos-slide-copy h2,
+  .capsos-slide-copy h3 {
+    max-width: 100%;
+    margin-bottom: 16px;
+    font-size: clamp(2.25rem, 10.5vw, 3.35rem);
+    line-height: 1.03;
+    letter-spacing: -0.04em;
+  }
+
+  .capsos-slide-description {
+    max-width: 100%;
+    margin-bottom: 18px;
+    font-size: 0.91rem;
+    line-height: 1.55;
+  }
+
+  .capsos-slide-features {
+    gap: 8px 13px;
+    margin-bottom: 23px;
+  }
+
+  .capsos-slide-features span {
+    font-size: 0.76rem;
+  }
+
+  .capsos-slide-actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .capsos-slider-button {
+    width: 100%;
+    min-height: 49px;
+    padding: 11px 18px;
+  }
+
+  .capsos-slide-trust {
+    display: none;
+  }
+
+  .capsos-slider-navigation {
+    right: 23px;
+    bottom: 29px;
+    left: 23px;
+    justify-content: center;
+  }
+
+  .capsos-slider-arrow {
+    width: 39px;
+    height: 39px;
+  }
+
+  .capsos-slider-indicators [data-bs-target] {
+    width: 18px;
+  }
+
+  .capsos-slider-indicators [data-bs-target].active {
+    width: 38px;
+  }
+
+  .capsos-slider-scroll {
+    display: none;
+  }
+}
+
+/* ======================================================
+   MÓVILES PEQUEÑOS
+====================================================== */
+
+@media (max-width: 420px) {
+  .capsos-slide-layout {
+    height: 760px;
+  }
+
+  .capsos-slide-copy-panel {
+    padding:
+      85px
+      18px
+      110px;
+  }
+
+  .capsos-slide-title,
+  .capsos-slide-copy h1,
+  .capsos-slide-copy h2,
+  .capsos-slide-copy h3 {
+    font-size: clamp(2rem, 10.5vw, 2.75rem);
+  }
+
+  .capsos-slide-description {
+    font-size: 0.86rem;
+  }
+
+  .capsos-slide-features span {
+    font-size: 0.72rem;
+  }
+
+  .capsos-slider-button {
+    font-size: 0.84rem;
+  }
+}
+
+/* ======================================================
+   ACCESIBILIDAD: REDUCCIÓN DE MOVIMIENTO
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .capsos-slide-media,
+  .capsos-slider-button,
+  .capsos-slider-arrow {
+    transition: none;
+  }
+
+  .carousel-item.active .capsos-slide-media {
+    transform: scale(1.02);
+  }
+
+  .capsos-slide-category,
+  .capsos-slide-title,
+  .capsos-slide-description,
+  .capsos-slide-features,
+  .capsos-slide-actions,
+  .capsos-slide-trust {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .capsos-slider-scroll i {
+    animation: none;
+  }
+}

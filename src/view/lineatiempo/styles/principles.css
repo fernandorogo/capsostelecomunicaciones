@@ -1,0 +1,138 @@
+/* PRINCIPIOS */
+
+.principles-grid {
+  max-width: 1040px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.principle-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--capsos-border);
+  border-radius: var(--capsos-radius-sm);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 22px rgba(16, 37, 54, 0.045);
+  transition:
+    box-shadow 0.28s ease,
+    transform 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.principle-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(33, 158, 188, 0.28);
+  box-shadow: var(--capsos-shadow-sm);
+}
+
+.principle-card.expanded {
+  border-color: rgba(33, 158, 188, 0.48);
+  box-shadow: 0 18px 42px rgba(16, 37, 54, 0.1);
+}
+
+.principle-button {
+  width: 100%;
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 20px;
+  border: 0;
+  background: var(--capsos-white);
+  color: var(--capsos-dark);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.principle-card.expanded .principle-button {
+  background: linear-gradient(
+    90deg,
+    rgba(33, 158, 188, 0.12),
+    rgba(255, 255, 255, 0.96) 78%
+  );
+  color: var(--capsos-blue-dark);
+}
+
+.principle-button > span {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: var(--capsos-blue-soft);
+  color: var(--capsos-blue);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.principle-card.expanded .principle-button > span {
+  background: var(--capsos-blue);
+  color: var(--capsos-white);
+}
+
+.principle-button strong {
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.91rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  text-overflow: ellipsis;
+}
+
+.principle-button b {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(11, 94, 168, 0.14);
+  border-radius: 50%;
+  background: var(--capsos-surface);
+  color: var(--capsos-blue);
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 1;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.principle-card.expanded .principle-button b {
+  transform: rotate(180deg);
+  background: var(--capsos-white);
+}
+
+.principle-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  background: linear-gradient(to bottom, rgba(244, 248, 251, 0.7), #ffffff);
+  transition: grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.principle-card.expanded .principle-content {
+  grid-template-rows: 1fr;
+}
+
+.principle-content p {
+  min-height: 0;
+  margin: 0;
+  padding: 0 22px;
+  overflow: hidden;
+}
+
+.principle-card.expanded .principle-content p {
+  padding: 24px 25px 28px 79px;
+  border-top: 1px solid rgba(11, 94, 168, 0.08);
+}
+

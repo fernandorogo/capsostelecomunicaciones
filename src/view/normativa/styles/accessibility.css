@@ -1,0 +1,41 @@
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+.normativa-page a:focus-visible,
+.normativa-page button:focus-visible,
+.normativa-page input:focus-visible {
+  outline:
+    3px solid
+    rgba(43, 199, 240, 0.7);
+
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .normativa-hero__media img,
+  .normativa-hero__copy,
+  .normativa-hero__progress span,
+  .normativa-card,
+  .normativa-card::before,
+  .normativa-card__action,
+  .normativa-hero__primary,
+  .normativa-hero__secondary,
+  .normativa-hero__arrow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .normativa-card,
+  .normativa-filter-panel {
+    border-color:
+      rgba(7, 27, 45, 0.32);
+  }
+
+  .normativa-card__summary,
+  .normativa-library__heading p {
+    color: #405566;
+  }
+}

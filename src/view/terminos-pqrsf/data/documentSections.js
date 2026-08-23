@@ -1,0 +1,92 @@
+export const DOCUMENT_SECTIONS = [
+  {
+    id: 'objeto-alcance',
+    number: '01',
+    icon: 'fa-bullseye',
+    title: 'Objeto y alcance',
+  },
+  {
+    id: 'aceptacion',
+    number: '02',
+    icon: 'fa-file-signature',
+    title: 'Aceptación de las condiciones',
+  },
+  {
+    id: 'clasificacion',
+    number: '03',
+    icon: 'fa-list-check',
+    title: 'Clasificación de las solicitudes',
+  },
+  {
+    id: 'presentacion',
+    number: '04',
+    icon: 'fa-user-check',
+    title: 'Presentación de la solicitud',
+  },
+  {
+    id: 'radicacion',
+    number: '05',
+    icon: 'fa-receipt',
+    title: 'Radicación y seguimiento',
+  },
+  {
+    id: 'gestion-respuesta',
+    number: '06',
+    icon: 'fa-clock',
+    title: 'Gestión y respuesta',
+  },
+  {
+    id: 'comunicaciones',
+    number: '07',
+    icon: 'fa-envelope',
+    title: 'Comunicaciones y notificaciones',
+  },
+  {
+    id: 'datos-personales',
+    number: '08',
+    icon: 'fa-shield-halved',
+    title: 'Tratamiento de datos personales',
+  },
+  {
+    id: 'datos-especiales',
+    number: '09',
+    icon: 'fa-user-shield',
+    title: 'Datos sensibles y datos de menores',
+  },
+  {
+    id: 'archivos',
+    number: '10',
+    icon: 'fa-paperclip',
+    title: 'Documentos y archivos adjuntos',
+  },
+  {
+    id: 'seguridad',
+    number: '11',
+    icon: 'fa-lock',
+    title: 'Seguridad y confidencialidad',
+  },
+  {
+    id: 'disponibilidad',
+    number: '12',
+    icon: 'fa-server',
+    title: 'Disponibilidad del canal',
+  },
+  {
+    id: 'uso-adecuado',
+    number: '13',
+    icon: 'fa-triangle-exclamation',
+    title: 'Uso adecuado del formulario',
+  },
+  {
+    id: 'actualizacion',
+    number: '14',
+    icon: 'fa-rotate',
+    title: 'Actualización del documento',
+  },
+  {
+    id: 'normatividad',
+    number: '15',
+    icon: 'fa-scale-balanced',
+    title: 'Normatividad aplicable',
+  },
+];
