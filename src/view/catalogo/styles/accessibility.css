@@ -1,0 +1,48 @@
+.catalog-page button:focus-visible,
+.catalog-page a:focus-visible,
+.catalog-page input:focus-visible,
+.catalog-page select:focus-visible {
+  outline:
+    3px solid
+    rgba(
+      34,
+      204,
+      241,
+      0.52
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .catalog-page *,
+  .catalog-page *::before,
+  .catalog-page *::after {
+    scroll-behavior:
+      auto !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+  }
+
+
+  .catalog-product-card:hover,
+  .catalog-product-card:hover
+  .catalog-product-media img,
+  .catalog-product-action:hover,
+  .catalog-category-button:hover {
+    transform:
+      none;
+  }
+}

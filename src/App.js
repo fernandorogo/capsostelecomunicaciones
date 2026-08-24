@@ -12,6 +12,7 @@ import Normativa from './view/Normativa';
 import Lineatiempo from './view/Lineatiempo'
 import TerminosCondicionesPQRSF from './view/TerminosCondicionesPQRSF';
 import PoliticaTratamientoDatos from './view/PoliticaTratamientoDatos';
+import Catalogo from './view/CatalogoEquipos'
 
 import FooterSection from './components/FooterSection';
 import NavBarSection from './components/NavBarSection';
@@ -41,6 +42,7 @@ function App() {
           <Route path="/politica-tratamiento-datos" element={<PoliticaTratamientoDatos />} />
           <Route path="/pagos" element={<PagoEnLinea />} />
           <Route path="/historia" element={<Lineatiempo />} />
+          <Route path="/catalogo" element={<Catalogo />} />
           <Route path="*" element={<Page />} />
         </Routes>
       </main>

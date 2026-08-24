@@ -1,0 +1,202 @@
+.catalog-page {
+  --catalog-navy: #061b3b;
+  --catalog-navy-2: #082b57;
+  --catalog-blue: #087fbe;
+  --catalog-cyan: #19c8ec;
+  --catalog-text: #172333;
+  --catalog-muted: #687786;
+  --catalog-surface: #ffffff;
+  --catalog-bg: #f5f8fb;
+  --catalog-border:
+    rgba(12, 57, 91, 0.09);
+  --catalog-shadow:
+    0 18px 50px
+    rgba(13, 44, 70, 0.08);
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background:
+    var(--catalog-bg);
+
+  color:
+    var(--catalog-text);
+}
+
+
+.catalog-main {
+  position: relative;
+}
+
+
+.catalog-library {
+  padding:
+    96px
+    0
+    112px;
+
+  scroll-margin-top:
+    90px;
+}
+
+
+.catalog-section-heading {
+  display: flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap: 36px;
+
+  margin-bottom:
+    38px;
+}
+
+
+.catalog-section-copy {
+  max-width:
+    720px;
+}
+
+
+.catalog-section-kicker,
+.catalog-kicker {
+  display:
+    inline-block;
+
+  margin-bottom:
+    12px;
+
+  color:
+    var(--catalog-cyan);
+
+  font-size:
+    0.76rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.14em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.catalog-section-heading h2 {
+  margin:
+    0
+    0
+    14px;
+
+  color:
+    var(--catalog-text);
+
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.1rem
+    );
+
+  line-height:
+    1.08;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.catalog-section-heading p {
+  max-width:
+    660px;
+
+  margin: 0;
+
+  color:
+    var(--catalog-muted);
+
+  line-height:
+    1.75;
+}
+
+
+.catalog-result-badge {
+  flex:
+    0 0 auto;
+
+  min-width:
+    114px;
+
+  padding:
+    17px
+    22px;
+
+  border:
+    1px solid
+    var(--catalog-border);
+
+  border-radius:
+    16px;
+
+  background:
+    #ffffff;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0
+    10px
+    28px
+    rgba(
+      13,
+      44,
+      70,
+      0.055
+    );
+}
+
+
+.catalog-result-badge strong {
+  display:
+    block;
+
+  color:
+    var(--catalog-blue);
+
+  font-size:
+    1.55rem;
+
+  font-weight:
+    800;
+
+  line-height:
+    1;
+}
+
+
+.catalog-result-badge span {
+  display:
+    block;
+
+  margin-top:
+    5px;
+
+  color:
+    #7c8894;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+}

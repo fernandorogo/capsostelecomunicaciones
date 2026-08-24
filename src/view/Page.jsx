@@ -10,6 +10,7 @@ import ContactSection from '../components/ContactSection';
 import PopupPublicidad from '../components/PopupPublicidad';
 import CapsosImageWall from '../components/CapsosImageWall';
 import FacebookFeed from '../components/FacebookFeed';
+import EquiposDestacados from '../components/EquiposDestacados';
 
 const HomeCorporate = () => {
   useEffect(() => {
@@ -25,10 +26,11 @@ const HomeCorporate = () => {
         <HeroSliderSection />
         <ServicesSection />
 
-      <FacebookFeed />
+        <FacebookFeed />
         <ChannelsSection />
+        <EquiposDestacados/>
         <AboutSection />
-        <CapsosImageWall/>
+        <CapsosImageWall />
         <ContactSection />
       </main>
 
