@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/capsostelecomunicaciones/static/css/main.dd707af2.css",
-    "main.js": "/capsostelecomunicaciones/static/js/main.e5ebb467.js",
+    "main.css": "/capsostelecomunicaciones/static/css/main.cb6f9416.css",
+    "main.js": "/capsostelecomunicaciones/static/js/main.e6761ed0.js",
     "static/js/239.3125588b.chunk.js": "/capsostelecomunicaciones/static/js/239.3125588b.chunk.js",
     "static/js/977.2b445630.chunk.js": "/capsostelecomunicaciones/static/js/977.2b445630.chunk.js",
     "static/js/455.68eed7ae.chunk.js": "/capsostelecomunicaciones/static/js/455.68eed7ae.chunk.js",
@@ -29,6 +29,20 @@
     "static/media/canal-presentadora-institucional.png": "/capsostelecomunicaciones/static/media/canal-presentadora-institucional.43ba7cf9bdc0d77ec246.png",
     "static/media/normativa-cumplimiento.png": "/capsostelecomunicaciones/static/media/normativa-cumplimiento.9b51cc58594613a49dd2.png",
     "static/media/normativa-datos.png": "/capsostelecomunicaciones/static/media/normativa-datos.64ef9ec31e9f6d3cf1ef.png",
+    "static/media/Memoria MicroSD IMOU 64 GB.png": "/capsostelecomunicaciones/static/media/Memoria MicroSD IMOU 64 GB.f79908ef8eef65824f4b.png",
+    "static/media/TP-Link Archer C64 AC1200.png": "/capsostelecomunicaciones/static/media/TP-Link Archer C64 AC1200.67b5a43e3fd4eb92bab6.png",
+    "static/media/Slider.png": "/capsostelecomunicaciones/static/media/Slider.268eba7ec3bc5a500347.png",
+    "static/media/TP-Link Archer AX1500.png": "/capsostelecomunicaciones/static/media/TP-Link Archer AX1500.1d30077007e65a20541e.png",
+    "static/media/TP-Link Archer C20 AC750.png": "/capsostelecomunicaciones/static/media/TP-Link Archer C20 AC750.e7efb7cc40beebd16112.png",
+    "static/media/TP-Link EAP110.png": "/capsostelecomunicaciones/static/media/TP-Link EAP110.088f994787b4a1a57c4a.png",
+    "static/media/Cámara IMOU Cruiser Dual 8 MP.png": "/capsostelecomunicaciones/static/media/Cámara IMOU Cruiser Dual 8 MP.122a1ecde769935d9d38.png",
+    "static/media/Cámara IMOU Ranger 2 Dual 6 MP.png": "/capsostelecomunicaciones/static/media/Cámara IMOU Ranger 2 Dual 6 MP.61a7e3fa212f81de0594.png",
+    "static/media/Mercusys AC1200 MR30G.png": "/capsostelecomunicaciones/static/media/Mercusys AC1200 MR30G.0384d3ccd3172470ecba.png",
+    "static/media/Cámara IMOU Full Color IPC-K7FN.png": "/capsostelecomunicaciones/static/media/Cámara IMOU Full Color IPC-K7FN.5ccc3d1796a7929cfe2a.png",
+    "static/media/Cámara IMOU IPC-K2MN.png": "/capsostelecomunicaciones/static/media/Cámara IMOU IPC-K2MN.d0e22afa6f48801bdf34.png",
+    "static/media/Extensor WiFi TP-Link 300 Mbps.png": "/capsostelecomunicaciones/static/media/Extensor WiFi TP-Link 300 Mbps.6e7e26f11827d7597de6.png",
+    "static/media/Cámara IMOU Ranger 2 IPC-K2EN.png": "/capsostelecomunicaciones/static/media/Cámara IMOU Ranger 2 IPC-K2EN.ff1ffd97095f9400c006.png",
+    "static/media/TP-Link Deco M5.png": "/capsostelecomunicaciones/static/media/TP-Link Deco M5.bc73939aadce0caf5f9a.png",
     "static/media/banner-publicidad-1.jpg": "/capsostelecomunicaciones/static/media/banner-publicidad-1.8d4edf16729dcaee9e53.jpg",
     "static/media/banner-publicidad-3.jpg": "/capsostelecomunicaciones/static/media/banner-publicidad-3.3fc386aa3def486235cd.jpg",
     "static/media/banner-publicidad-2.jpg": "/capsostelecomunicaciones/static/media/banner-publicidad-2.4f9dd9affd8e8d048c68.jpg",
@@ -127,14 +141,14 @@
     "static/media/ChatGPT Image 30 jul 2026, 11_43_47 p.m..webp": "/capsostelecomunicaciones/static/media/ChatGPT Image 30 jul 2026, 11_43_47 p.m..6de873f8306aecd8f862.webp",
     "static/media/nperf-new-logo.svg": "/capsostelecomunicaciones/static/media/nperf-new-logo.ac15acd55e4909eeb835038ad047e363.svg",
     "index.html": "/capsostelecomunicaciones/index.html",
-    "main.dd707af2.css.map": "/capsostelecomunicaciones/static/css/main.dd707af2.css.map",
-    "main.e5ebb467.js.map": "/capsostelecomunicaciones/static/js/main.e5ebb467.js.map",
+    "main.cb6f9416.css.map": "/capsostelecomunicaciones/static/css/main.cb6f9416.css.map",
+    "main.e6761ed0.js.map": "/capsostelecomunicaciones/static/js/main.e6761ed0.js.map",
     "239.3125588b.chunk.js.map": "/capsostelecomunicaciones/static/js/239.3125588b.chunk.js.map",
     "977.2b445630.chunk.js.map": "/capsostelecomunicaciones/static/js/977.2b445630.chunk.js.map",
     "455.68eed7ae.chunk.js.map": "/capsostelecomunicaciones/static/js/455.68eed7ae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd707af2.css",
-    "static/js/main.e5ebb467.js"
+    "static/css/main.cb6f9416.css",
+    "static/js/main.e6761ed0.js"
   ]
 }
