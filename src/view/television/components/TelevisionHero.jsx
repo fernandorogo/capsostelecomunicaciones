@@ -5,7 +5,6 @@ import {
   faChevronLeft,
   faChevronRight,
   faHeadset,
-  faPlay,
   faSignal,
   faTv,
 } from '@fortawesome/free-solid-svg-icons';

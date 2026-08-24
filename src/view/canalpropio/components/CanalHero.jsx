@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
   faArrowRight,
-  faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {

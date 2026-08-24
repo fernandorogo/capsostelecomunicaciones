@@ -5,8 +5,6 @@ import {
   faCircleCheck,
   faHeadset,
   faShieldHalved,
-  faTv,
-  faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 
 import SectionHeading from './SectionHeading';

@@ -7,13 +7,6 @@ const CapsosFooter = ({ content }) => {
     return null;
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <footer className="inet-final" aria-labelledby="capsos-footer-title">
       <div className="inet-final-media" aria-hidden="true">
@@ -40,11 +33,12 @@ const CapsosFooter = ({ content }) => {
               rel="noopener noreferrer"
               className="btn btn-corporate-primary"
             >
-              <i className="fab fa-whatsapp me-2" aria-hidden="true" />
+              <i
+                className="fab fa-whatsapp me-2"
+                aria-hidden="true"
+              />
               {content.primaryActionLabel}
             </a>
-
-            
           </div>
         </div>
       </div>

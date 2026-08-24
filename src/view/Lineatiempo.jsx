@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './lineatiempo/styles/Lineatiempo.css';
 
@@ -38,6 +38,27 @@ const Lineatiempo = () => {
     activeSection,
     scrollToSection,
   } = useInstitutionalNavigation(heroContent.targetSection);
+
+  useEffect(() => {
+    // Evita que el navegador restaure automáticamente
+    // la posición anterior del scroll.
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Siempre iniciar en la parte superior.
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto',
+    });
+
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
 
   return (
     <main ref={pageRef} className="capsos-page">

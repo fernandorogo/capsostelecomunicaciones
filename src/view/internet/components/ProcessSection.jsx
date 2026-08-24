@@ -1,7 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
 import { createWhatsAppUrl } from '../utils/whatsapp';
 
 const ProcessSection = ({ steps }) => (
