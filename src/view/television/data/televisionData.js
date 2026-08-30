@@ -19,10 +19,10 @@ import {
   faScrewdriverWrench,
 } from '@fortawesome/free-solid-svg-icons';
 
-import tvHogar from '../../../assets/television/tv-hogar.png';
-import tvDeportes from '../../../assets/television/tv-deportes.png';
-import tvCineSeries from '../../../assets/television/tv-cine-series.png';
-import tvEmpresarial from '../../../assets/television/tv-empresarial.png';
+import tvHogar from '../../../assets/television/tv-hogar.webp';
+import tvDeportes from '../../../assets/television/tv-deportes.webp';
+import tvCineSeries from '../../../assets/television/tv-cine-series.webp';
+import tvEmpresarial from '../../../assets/television/tv-empresarial.webp';
 
 export const heroSlides = [
   {

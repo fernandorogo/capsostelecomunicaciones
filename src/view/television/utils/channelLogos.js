@@ -1,196 +1,1269 @@
+/*
+|--------------------------------------------------------------------------
+| NORMALIZAR TEXTO
+|--------------------------------------------------------------------------
+*/
+
 const normalizeChannelName = (value = '') =>
-  value
+  String(value)
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9+]+/g, ' ')
+    .replace(/\+/g, ' plus ')
+    .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 
+
 /*
- * El mapa usa el sitio web de la marca/señal como fuente del icono.
- * Google S2 entrega el favicon público asociado al dominio. Esto evita
- * mantener decenas de imágenes repetidas dentro del bundle y permite
- * que la parrilla siga funcionando aunque un canal cambie su identidad.
- *
- * Si más adelante se agregan PNG/SVG locales, ChannelLogo.jsx puede
- * priorizarlos sin modificar la estructura de la parrilla.
- */
-const CHANNEL_DOMAINS = {
-  // Deportes
-  espn: 'espn.com',
-  'espn 2': 'espn.com',
-  'espn 3': 'espn.com',
-  'espn 4': 'espn.com',
-  'espn 5': 'espn.com',
-  'espn 6': 'espn.com',
-  'espn 7': 'espn.com',
+|--------------------------------------------------------------------------
+| TEXTO COMPACTO
+|--------------------------------------------------------------------------
+|
+| "Señal Colombia"
+|
+| se convierte en:
+|
+| "senalcolombia"
+|
+|--------------------------------------------------------------------------
+*/
 
-  // Nacionales, regionales y locales
-  rcn: 'canalrcn.com',
-  'rcn hd2': 'canalrcn.com',
-  caracol: 'caracoltv.com',
-  'caracol hd2': 'caracoltv.com',
-  'caracol 2': 'caracoltv.com',
-  'canal uno': 'canal1.com.co',
-  'canal 1': 'canal1.com.co',
-  telemedellin: 'telemedellin.tv',
-  teleantioquia: 'teleantioquia.co',
-  'teleantioquia go': 'teleantioquia.co',
-  'canal institucional': 'canalinstitucional.tv',
-  'city tv': 'citytv.com.co',
-  citytv: 'citytv.com.co',
-  zoom: 'canalzoom.org',
-  congreso: 'canalcongreso.gov.co',
-  'canal congreso': 'canalcongreso.gov.co',
-  cosmovision: 'cosmovision.tv',
-  'senal colombia': 'senalcolombia.tv',
-  'canal capital': 'canalcapital.gov.co',
-  telecafe: 'telecafe.gov.co',
-  telepacifico: 'telepacifico.com',
-  'canal tro': 'canaltro.com',
-  'canal trece': 'canaltrece.com.co',
-  teleisla: 'teleislas.com.co',
-  cnc: 'canalcncmedellin.com',
-  telecaribe: 'telecaribe.co',
-  'tv agro': 'tvagro.tv',
+const compactChannelName = (value = '') =>
+  normalizeChannelName(value)
+    .replace(/\s+/g, '');
 
-  // Documentales, ciencia y hogar
-  'love nature': 'lovenature.com',
-  'discovery channel': 'discovery.com',
-  'animal planet': 'animalplanet.com',
-  natgeo: 'nationalgeographic.com',
-  'nat geo': 'nationalgeographic.com',
-  'discovery h and h': 'discovery.com',
-  'investigation discovery': 'investigationdiscovery.com',
-  'discovery id': 'investigationdiscovery.com',
-  hgtv: 'hgtv.com',
-  'food network': 'foodnetwork.com',
-  food: 'foodnetwork.com',
-  'discovery science': 'sciencechannel.com',
-  'discovery turbo': 'discovery.com',
-  turbo: 'discovery.com',
-  history: 'history.com',
-  'history 2': 'history.com',
 
-  // Infantiles
-  'discovery kids': 'discoverykidsplus.com',
-  'disney channel': 'disney.com',
-  'disney junior': 'disneyjunior.disney.com',
-  'baby tv': 'babytv.com',
-  plimplim: 'plimplim.tv',
-  'baby first': 'babyfirsttv.com',
-  'canal infantil': 'fridamedia.com',
-  'cartoon network': 'cartoonnetwork.com',
-  cartoonito: 'cartoonnetwork.com',
-  'adult swim': 'adultswim.com',
-  dreamworks: 'dreamworks.com',
-  tooncast: 'tooncast.tv',
+/*
+|--------------------------------------------------------------------------
+| LIMPIAR NOMBRE DEL ARCHIVO
+|--------------------------------------------------------------------------
+|
+| Ejemplos:
+|
+| 21.ESPN_wordmark.webp
+|      ↓
+| espn
+|
+| 12.Señal_Colombia_logo.webp
+|      ↓
+| senal colombia
+|
+| 38.Star_Channel_2021.webp
+|      ↓
+| star channel
+|
+|--------------------------------------------------------------------------
+*/
 
-  // Religión
-  televid: 'televid.tv',
-  teleamiga: 'teleamiga.tv',
-  ewtn: 'ewtn.com',
-  sjtv: 'youtube.com',
-  enlace: 'enlacetv.com',
-  'canal luz': 'canalluz.org',
-  cristovision: 'cristovision.co',
-  mariavision: 'mariavision.com',
-  'maria vision': 'mariavision.com',
-  'sophia tv': 'sophiatv.com.br',
+const cleanLogoFileName = (fileName = '') => {
 
-  // Música
-  'la kalle': 'lakalle.bluradio.com',
-  'mi musica salsa': 'fridamedia.com',
-  'mi musica popular': 'fridamedia.com',
-  'mi musica romantica': 'fridamedia.com',
-  'mi musica reggaeton': 'fridamedia.com',
-  'mi musica urbana': 'fridamedia.com',
-  telenostalgia: 'canaltelenostalgia.com',
-  'rumba tv': 'signaltv.co',
-  'tv musical': 'youtube.com',
-  htv: 'htv.com',
+  let value = String(fileName);
 
-  // Cine, series y entretenimiento
-  fx: 'fxnow.fxnetworks.com',
-  'star channel': 'starplus.com',
-  'tnt series': 'tntla.com',
-  tnt: 'tntla.com',
-  'tnt novelas': 'tntnovelas.com',
-  space: 'canalspace.tv',
-  'sony channel': 'la.sonychannel.com',
-  'sony movies': 'la.sonychannel.com',
-  axn: 'axn.com',
-  'universal tv': 'universalplus.com',
-  universal: 'universalplus.com',
-  'studio universal': 'universalplus.com',
-  'cine familiar': 'fridamedia.com',
-  'cine espanol': 'fridamedia.com',
-  'cine canal': 'cinecanal.com',
-  'cinema +': 'fridamedia.com',
-  amc: 'amc.com',
-  'a and e': 'aetv.com',
-  tlc: 'tlc.com',
-  usa: 'usanetwork.com',
-  telemundo: 'telemundo.com',
-  'life time': 'mylifetime.com',
-  dhe: 'dhe.tv',
-  'e!': 'eonline.com',
-  've plus': 'veplus.com',
-  pasiones: 'pasiones.tv',
-  sun: 'fridamedia.com',
-  'hogar tv': 'signaltv.co',
 
-  // Noticias
-  ntn24: 'ntn24.com',
-  'cable noticias': 'cablenoticias.tv',
-  'cnn espanol': 'cnnespanol.cnn.com',
-  telesur: 'telesurtv.net',
+  /*
+  |--------------------------------------------------------------------------
+  | QUITAR EXTENSIÓN
+  |--------------------------------------------------------------------------
+  */
+
+  value = value.replace(/\.webp$/i, '');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | QUITAR NÚMERO DEL PRINCIPIO
+  |--------------------------------------------------------------------------
+  |
+  | 21.ESPN
+  | 22.ESPN2
+  | 107.Canal CNC
+  |
+  |--------------------------------------------------------------------------
+  */
+
+  value = value.replace(/^\d+\s*[.\-_]?\s*/i, '');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | QUITAR NÚMEROS ENTRE PARÉNTESIS AL FINAL
+  |--------------------------------------------------------------------------
+  |
+  | RCN_logo_(2)
+  |
+  |--------------------------------------------------------------------------
+  */
+
+  value = value.replace(/\(\s*\d+\s*\)$/i, '');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | NORMALIZAR
+  |--------------------------------------------------------------------------
+  */
+
+  value = normalizeChannelName(value);
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | QUITAR PALABRAS QUE DESCRIBEN EL ARCHIVO,
+  | PERO NO EL CANAL
+  |--------------------------------------------------------------------------
+  */
+
+  value = value
+    .replace(/\bwordmark\b/g, ' ')
+    .replace(/\blogo\b/g, ' ')
+    .replace(/\blogos\b/g, ' ')
+    .replace(/\bcorporativo\b/g, ' ')
+    .replace(/\bfondo\b/g, ' ')
+    .replace(/\btransparente\b/g, ' ')
+    .replace(/\bcopia\b/g, ' ')
+    .replace(/\bpng\b/g, ' ')
+    .replace(/\bsvg\b/g, ' ')
+    .replace(/\bblanco\b/g, ' ')
+    .replace(/\bonline\b/g, ' ')
+    .replace(/\ben vivo\b/g, ' ')
+    .replace(/\b19\d{2}\b/g, ' ')
+    .replace(/\b20\d{2}\b/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+
+  return value;
+
 };
 
-export const getChannelLogoDomain = (channelName) => {
-  const normalized = normalizeChannelName(channelName);
 
-  if (CHANNEL_DOMAINS[normalized]) {
-    return CHANNEL_DOMAINS[normalized];
+/*
+|--------------------------------------------------------------------------
+| CARGAR LOGOS
+|--------------------------------------------------------------------------
+|
+| channelLogos.js:
+|
+| src/view/television/utils/channelLogos.js
+|
+| logos:
+|
+| src/assets/logosCanales
+|
+|--------------------------------------------------------------------------
+*/
+
+const logosContext = require.context(
+  '../../../assets/logosCanales',
+  false,
+  /\.webp$/i
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| CREAR LISTADO DE LOGOS
+|--------------------------------------------------------------------------
+*/
+
+const LOGO_ENTRIES = logosContext.keys().map((logoPath) => {
+
+  const importedLogo = logosContext(logoPath);
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | URL GENERADA POR WEBPACK
+  |--------------------------------------------------------------------------
+  */
+
+  const url =
+    typeof importedLogo === 'string'
+      ? importedLogo
+      : importedLogo?.default || importedLogo;
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | NOMBRE REAL DEL ARCHIVO
+  |--------------------------------------------------------------------------
+  */
+
+  const fileName = logoPath
+    .replace(/^\.\//, '')
+    .replace(/\.webp$/i, '');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | QUITAR NÚMERO INICIAL
+  |--------------------------------------------------------------------------
+  */
+
+  const withoutInitialNumber = fileName
+    .replace(/^\d+\s*[.\-_]?\s*/i, '');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | VERSIONES DEL NOMBRE
+  |--------------------------------------------------------------------------
+  */
+
+  const normalized =
+    normalizeChannelName(withoutInitialNumber);
+
+
+  const compact =
+    compactChannelName(withoutInitialNumber);
+
+
+  const cleaned =
+    cleanLogoFileName(fileName);
+
+
+  const cleanedCompact =
+    compactChannelName(cleaned);
+
+
+  return {
+
+    path: logoPath,
+
+    fileName,
+
+    normalized,
+
+    compact,
+
+    cleaned,
+
+    cleanedCompact,
+
+    url
+
+  };
+
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| ALIAS
+|--------------------------------------------------------------------------
+|
+| Sirve para relacionar el nombre mostrado en la página con nombres
+| diferentes utilizados en los archivos.
+|
+|--------------------------------------------------------------------------
+*/
+
+const CHANNEL_ALIASES = {
+
+  /*
+  |--------------------------------------------------------------------------
+  | DEPORTES
+  |--------------------------------------------------------------------------
+  */
+
+  espn: [
+    'espn',
+    'espn wordmark'
+  ],
+
+  'espn 2': [
+    'espn2',
+    'espn 2'
+  ],
+
+  'espn 3': [
+    'espn3',
+    'espn 3'
+  ],
+
+  'espn 4': [
+    'espn4',
+    'espn 4'
+  ],
+
+  'espn 5': [
+    'espn5',
+    'espn 5'
+  ],
+
+  'espn 6': [
+    'espn6',
+    'espn 6'
+  ],
+
+  'espn 7': [
+    'espn7',
+    'espn 7'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | NACIONALES
+  |--------------------------------------------------------------------------
+  */
+
+  rcn: [
+    'rcn'
+  ],
+
+  'rcn hd2': [
+    'rcn hd2',
+    'rcnhd2'
+  ],
+
+  caracol: [
+    'caracol',
+    'caracol television'
+  ],
+
+  'caracol hd2': [
+    'caracol hd2',
+    'caracolhd2'
+  ],
+
+  'caracol 2': [
+    'caracol 2',
+    'caracol2',
+    'caracol'
+  ],
+
+  'canal uno': [
+    'canal uno',
+    'canal 1'
+  ],
+
+  'canal 1': [
+    'canal 1',
+    'canal uno'
+  ],
+
+  telemedellin: [
+    'telemedellin'
+  ],
+
+  teleantioquia: [
+    'teleantioquia'
+  ],
+
+  'teleantioquia go': [
+    'teleantioquia go',
+    'teleantioquiago'
+  ],
+
+  'canal institucional': [
+    'senal institucional',
+    'canal institucional'
+  ],
+
+  'city tv': [
+    'city tv',
+    'citytv',
+    'city tv bogota'
+  ],
+
+  citytv: [
+    'city tv',
+    'citytv',
+    'city tv bogota'
+  ],
+
+  zoom: [
+    'canal zoom',
+    'zoom'
+  ],
+
+  congreso: [
+    'canal congreso',
+    'congreso'
+  ],
+
+  'canal congreso': [
+    'canal congreso',
+    'congreso'
+  ],
+
+  cosmovision: [
+    'cosmovision'
+  ],
+
+  'senal colombia': [
+    'senal colombia'
+  ],
+
+  'canal capital': [
+    'canal capital'
+  ],
+
+  telecafe: [
+    'telecafe'
+  ],
+
+  telepacifico: [
+    'telepacifico'
+  ],
+
+  'canal tro': [
+    'canal tro'
+  ],
+
+  'canal trece': [
+    'canal trece'
+  ],
+
+  teleisla: [
+    'teleisla',
+    'teleislas'
+  ],
+
+  cnc: [
+    'cnc',
+    'canal cnc'
+  ],
+
+  telecaribe: [
+    'telecaribe'
+  ],
+
+  'tv agro': [
+    'tv agro'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | DOCUMENTALES
+  |--------------------------------------------------------------------------
+  */
+
+  'love nature': [
+    'love nature'
+  ],
+
+  'discovery channel': [
+    'discovery channel'
+  ],
+
+  'animal planet': [
+    'animal planet'
+  ],
+
+  natgeo: [
+    'national geographic',
+    'nat geo',
+    'natgeo'
+  ],
+
+  'nat geo': [
+    'national geographic',
+    'nat geo',
+    'natgeo'
+  ],
+
+  'discovery h and h': [
+    'discovery home and health',
+    'discovery home health',
+    'discovery h and h'
+  ],
+
+  'investigation discovery': [
+    'investigation discovery',
+    'investigationdiscovery'
+  ],
+
+  'discovery id': [
+    'investigation discovery',
+    'investigationdiscovery',
+    'discovery id'
+  ],
+
+  hgtv: [
+    'hgtv us',
+    'hgtv'
+  ],
+
+  'food network': [
+    'food network'
+  ],
+
+  food: [
+    'food network',
+    'food'
+  ],
+
+  'discovery science': [
+    'discovery science channel',
+    'discovery science'
+  ],
+
+  'discovery turbo': [
+    'discovery turbo'
+  ],
+
+  turbo: [
+    'discovery turbo',
+    'turbo'
+  ],
+
+  history: [
+    'history'
+  ],
+
+  'history 2': [
+    'history 2',
+    'history2'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | INFANTILES
+  |--------------------------------------------------------------------------
+  */
+
+  'discovery kids': [
+    'discovery kids'
+  ],
+
+  'disney channel': [
+    'disney channel'
+  ],
+
+  'disney junior': [
+    'disney junior'
+  ],
+
+  'baby tv': [
+    'babytv',
+    'baby tv'
+  ],
+
+  plimplim: [
+    'plim plim',
+    'plimplim'
+  ],
+
+  'baby first': [
+    'babyfirst tv',
+    'baby first',
+    'babyfirst'
+  ],
+
+  'canal infantil': [
+    'canal infantil'
+  ],
+
+  'cartoon network': [
+    'cartoon network'
+  ],
+
+  cartoonito: [
+    'cartoonito'
+  ],
+
+  'adult swim': [
+    'adult swim'
+  ],
+
+  dreamworks: [
+    'dreamworks channel',
+    'dreamworks'
+  ],
+
+  tooncast: [
+    'tooncast'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | RELIGIÓN
+  |--------------------------------------------------------------------------
+  */
+
+  televid: [
+    'tele vid',
+    'televid'
+  ],
+
+  teleamiga: [
+    'canal teleamiga',
+    'teleamiga'
+  ],
+
+  ewtn: [
+    'ewtn'
+  ],
+
+  sjtv: [
+    'sjtv',
+    'ejtv'
+  ],
+
+  enlace: [
+    'enlace television',
+    'enlace'
+  ],
+
+  'canal luz': [
+    'canal la luz',
+    'canal luz'
+  ],
+
+  cristovision: [
+    'cristovision'
+  ],
+
+  mariavision: [
+    'mariavision'
+  ],
+
+  'maria vision': [
+    'mariavision'
+  ],
+
+  'sophia tv': [
+    'sophia tv'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | MÚSICA
+  |--------------------------------------------------------------------------
+  */
+
+  'la kalle': [
+    'la kalle'
+  ],
+
+  'mi musica salsa': [
+    'mi musica salsa'
+  ],
+
+  'mi musica popular': [
+    'mi musica popular'
+  ],
+
+  'mi musica romantica': [
+    'mi musica romantica'
+  ],
+
+  'mi musica reggaeton': [
+    'mi musica reggaeton'
+  ],
+
+  'mi musica urbana': [
+    'mi musica urbana'
+  ],
+
+  telenostalgia: [
+    'telenostalgia'
+  ],
+
+  'rumba tv': [
+    'rumba tv'
+  ],
+
+  'tv musical': [
+    'tv musical'
+  ],
+
+  htv: [
+    'htv'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | CINE / SERIES
+  |--------------------------------------------------------------------------
+  */
+
+  fx: [
+    'fx international',
+    'fx'
+  ],
+
+  'star channel': [
+    'star channel'
+  ],
+
+  'tnt series': [
+    'tnt series'
+  ],
+
+  tnt: [
+    'tnt'
+  ],
+
+  'tnt novelas': [
+    'tnt novelas'
+  ],
+
+  space: [
+    'space'
+  ],
+
+  'sony channel': [
+    'sony channel'
+  ],
+
+  'sony movies': [
+    'sony movies'
+  ],
+
+  axn: [
+    'axn'
+  ],
+
+  'universal tv': [
+    'universal tv'
+  ],
+
+  universal: [
+    'universal tv',
+    'universal'
+  ],
+
+  'studio universal': [
+    'studio universal'
+  ],
+
+  'cine familiar': [
+    'cine familiar'
+  ],
+
+  'cine espanol': [
+    'cine hispano',
+    'cine espanol'
+  ],
+
+  'cine canal': [
+    'cinecanal la',
+    'cinecanal',
+    'cine canal'
+  ],
+
+  'cinema +': [
+    'cinema plus',
+    'cinema'
+  ],
+
+  amc: [
+    'amc'
+  ],
+
+  'a and e': [
+    'a and e network',
+    'a and e'
+  ],
+
+  tlc: [
+    'tlc'
+  ],
+
+  usa: [
+    'usa network',
+    'usa'
+  ],
+
+  telemundo: [
+    'telemundo'
+  ],
+
+  'life time': [
+    'lifetime',
+    'life time'
+  ],
+
+  dhe: [
+    'canal dhe',
+    'dhe'
+  ],
+
+  'e!': [
+    'e'
+  ],
+
+  've plus': [
+    've plus'
+  ],
+
+  pasiones: [
+    'pasiones tv',
+    'pasiones'
+  ],
+
+  sun: [
+    'sun channel',
+    'sun'
+  ],
+
+  'hogar tv': [
+    'hogar tv'
+  ],
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | NOTICIAS
+  |--------------------------------------------------------------------------
+  */
+
+  ntn24: [
+    'ntn24'
+  ],
+
+  'cable noticias': [
+    'cable noticias'
+  ],
+
+  'cnn espanol': [
+    'cnn en espanol',
+    'cnn espanol'
+  ],
+
+  telesur: [
+    'telesur'
+  ]
+
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| ENCONTRAR COINCIDENCIA EXACTA
+|--------------------------------------------------------------------------
+*/
+
+const findExactLogo = (candidate = '') => {
+
+  const normalizedCandidate =
+    normalizeChannelName(candidate);
+
+
+  const compactCandidate =
+    compactChannelName(candidate);
+
+
+  if (!normalizedCandidate) {
+
+    return null;
+
   }
 
-  // Variantes previsibles: ESPN 2/3/4..., RCN/Caracol con sufijos, etc.
-  if (/^espn(?:\s+\d+)?$/.test(normalized)) return 'espn.com';
-  if (/^rcn(?:\s+hd2)?$/.test(normalized)) return 'canalrcn.com';
-  if (/^caracol(?:\s+hd2|\s+2)?$/.test(normalized)) return 'caracoltv.com';
-  if (/^mi musica\b/.test(normalized)) return 'fridamedia.com';
-  if (/^discovery\b/.test(normalized)) return 'discovery.com';
-  if (/^sony\b/.test(normalized)) return 'la.sonychannel.com';
+
+  const result = LOGO_ENTRIES.find((logo) =>
+
+    logo.normalized === normalizedCandidate ||
+
+    logo.compact === compactCandidate ||
+
+    logo.cleaned === normalizedCandidate ||
+
+    logo.cleanedCompact === compactCandidate
+
+  );
+
+
+  return result || null;
+
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| ENCONTRAR COINCIDENCIA PARCIAL
+|--------------------------------------------------------------------------
+|
+| Se usa después de intentar las coincidencias exactas.
+|
+|--------------------------------------------------------------------------
+*/
+
+const findPartialLogo = (candidate = '') => {
+
+  const normalizedCandidate =
+    normalizeChannelName(candidate);
+
+
+  const compactCandidate =
+    compactChannelName(candidate);
+
+
+  if (
+    !normalizedCandidate ||
+    compactCandidate.length < 3
+  ) {
+
+    return null;
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | PRIMERA OPCIÓN:
+  | NOMBRE LIMPIO EMPIEZA EXACTAMENTE POR EL CANAL
+  |--------------------------------------------------------------------------
+  */
+
+  let result = LOGO_ENTRIES.find((logo) => {
+
+    if (!logo.cleanedCompact) {
+
+      return false;
+
+    }
+
+
+    return (
+      logo.cleanedCompact.startsWith(
+        compactCandidate
+      ) ||
+      compactCandidate.startsWith(
+        logo.cleanedCompact
+      )
+    );
+
+  });
+
+
+  if (result) {
+
+    return result;
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | SEGUNDA OPCIÓN:
+  | EL NOMBRE CONTIENE LA CADENA COMPLETA
+  |--------------------------------------------------------------------------
+  */
+
+  result = LOGO_ENTRIES.find((logo) => {
+
+    if (!logo.cleanedCompact) {
+
+      return false;
+
+    }
+
+
+    return (
+      logo.cleanedCompact.includes(
+        compactCandidate
+      ) ||
+      compactCandidate.includes(
+        logo.cleanedCompact
+      )
+    );
+
+  });
+
+
+  return result || null;
+
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| BUSCAR LOGO DEL CANAL
+|--------------------------------------------------------------------------
+*/
+
+const findChannelLogo = (channelName = '') => {
+
+  const normalized =
+    normalizeChannelName(channelName);
+
+
+  if (!normalized) {
+
+    return null;
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | 1. NOMBRE DIRECTO
+  |--------------------------------------------------------------------------
+  */
+
+  let logo =
+    findExactLogo(channelName);
+
+
+  if (logo) {
+
+    return logo.url;
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | 2. ALIAS
+  |--------------------------------------------------------------------------
+  */
+
+  const aliases =
+    CHANNEL_ALIASES[normalized] || [];
+
+
+  for (const alias of aliases) {
+
+    logo = findExactLogo(alias);
+
+
+    if (logo) {
+
+      return logo.url;
+
+    }
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | 3. ALIAS CON COINCIDENCIA PARCIAL
+  |--------------------------------------------------------------------------
+  */
+
+  for (const alias of aliases) {
+
+    logo = findPartialLogo(alias);
+
+
+    if (logo) {
+
+      return logo.url;
+
+    }
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | 4. COINCIDENCIA PARCIAL DEL NOMBRE ORIGINAL
+  |--------------------------------------------------------------------------
+  */
+
+  logo = findPartialLogo(channelName);
+
+
+  if (logo) {
+
+    return logo.url;
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | 5. QUITAR HD / HD2 / HD3...
+  |--------------------------------------------------------------------------
+  */
+
+  const withoutHd =
+    normalized
+      .replace(/\s+hd\s*\d*$/i, '')
+      .trim();
+
+
+  if (
+    withoutHd &&
+    withoutHd !== normalized
+  ) {
+
+    logo = findExactLogo(withoutHd);
+
+
+    if (logo) {
+
+      return logo.url;
+
+    }
+
+
+    logo = findPartialLogo(withoutHd);
+
+
+    if (logo) {
+
+      return logo.url;
+
+    }
+
+  }
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | NO ENCONTRADO
+  |--------------------------------------------------------------------------
+  |
+  | Durante desarrollo mostramos en consola qué canal no encontró logo.
+  |
+  |--------------------------------------------------------------------------
+  */
+
+  if (
+    typeof process !== 'undefined' &&
+    process.env.NODE_ENV === 'development'
+  ) {
+
+    console.warn(
+      `[TV] No se encontró logo local para: ${channelName}`
+    );
+
+  }
+
 
   return null;
+
 };
 
-export const getChannelLogoUrl = (channelName, size = 128) => {
-  const domain = getChannelLogoDomain(channelName);
 
-  if (!domain) return null;
+/*
+|--------------------------------------------------------------------------
+| COMPATIBILIDAD CON CÓDIGO ANTERIOR
+|--------------------------------------------------------------------------
+|
+| La función permanece exportada para no romper imports anteriores.
+|
+|--------------------------------------------------------------------------
+*/
 
-  return `https://www.google.com/s2/favicons?domain_url=https://${domain}&sz=${size}`;
+export const getChannelLogoDomain = (
+  channelName
+) => {
+
+  void channelName;
+
+  return null;
+
 };
 
-export const getChannelInitials = (channelName = '') => {
-  const words = channelName
-    .replace(/[^\p{L}\p{N}]+/gu, ' ')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
 
-  if (!words.length) return 'TV';
+/*
+|--------------------------------------------------------------------------
+| OBTENER LOGO
+|--------------------------------------------------------------------------
+|
+| Esta función conserva el mismo nombre que ya estaba utilizando
+| el componente ChannelLogo.
+|
+|--------------------------------------------------------------------------
+*/
+
+export const getChannelLogoUrl = (
+  channelName,
+  size = 128
+) => {
+
+  /*
+  |--------------------------------------------------------------------------
+  | size YA NO ES NECESARIO CON IMÁGENES LOCALES,
+  | PERO LO CONSERVAMOS POR COMPATIBILIDAD
+  |--------------------------------------------------------------------------
+  */
+
+  void size;
+
+
+  return findChannelLogo(
+    channelName
+  );
+
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| INICIALES
+|--------------------------------------------------------------------------
+|
+| Se conserva el comportamiento que ya funcionaba.
+|
+|--------------------------------------------------------------------------
+*/
+
+export const getChannelInitials = (
+  channelName = ''
+) => {
+
+  const words =
+    String(channelName)
+      .replace(
+        /[^\p{L}\p{N}]+/gu,
+        ' '
+      )
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+
+  if (!words.length) {
+
+    return 'TV';
+
+  }
+
 
   if (words.length === 1) {
-    return words[0].slice(0, 3).toUpperCase();
+
+    return words[0]
+      .slice(0, 3)
+      .toUpperCase();
+
   }
+
 
   return words
     .slice(0, 3)
     .map((word) => word[0])
     .join('')
     .toUpperCase();
+
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| FUNCIÓN DE DEPURACIÓN
+|--------------------------------------------------------------------------
+|
+| Puedes usarla temporalmente desde otro archivo si quieres revisar
+| qué logos reconoció Webpack.
+|
+|--------------------------------------------------------------------------
+*/
+
+export const getLoadedChannelLogos = () => {
+
+  return LOGO_ENTRIES.map((logo) => ({
+
+    fileName: logo.fileName,
+
+    cleaned: logo.cleaned,
+
+    url: logo.url
+
+  }));
+
 };

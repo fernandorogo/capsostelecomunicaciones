@@ -21,7 +21,7 @@
   background:
     linear-gradient(90deg, rgba(3, 13, 23, 0.98), rgba(3, 13, 23, 0.82) 47%, rgba(3, 13, 23, 0.3)),
     linear-gradient(180deg, rgba(3, 13, 23, 0.18), rgba(3, 13, 23, 0.88)),
-    url('../../../assets/canal/canal-comunidad-evento.png');
+    url('../../../assets/canal/canal-comunidad-evento.webp');
   background-position: center;
   background-size: cover;
 }

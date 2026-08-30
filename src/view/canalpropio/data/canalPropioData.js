@@ -14,10 +14,10 @@ import {
   faVideo,
 } from '@fortawesome/free-solid-svg-icons';
 
-import canalEstudioControl from '../../../assets/canal/canal-estudio-control.png';
-import canalPresentadoraInstitucional from '../../../assets/canal/canal-presentadora-institucional.png';
-import canalEntrevistaPrograma from '../../../assets/canal/canal-entrevista-programa.png';
-import canalComunidadEvento from '../../../assets/canal/canal-comunidad-evento.png';
+import canalEstudioControl from '../../../assets/canal/canal-estudio-control.webp';
+import canalPresentadoraInstitucional from '../../../assets/canal/canal-presentadora-institucional.webp';
+import canalEntrevistaPrograma from '../../../assets/canal/canal-entrevista-programa.webp';
+import canalComunidadEvento from '../../../assets/canal/canal-comunidad-evento.webp';
 
 export const slides = [
   {

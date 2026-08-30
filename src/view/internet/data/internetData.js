@@ -18,10 +18,10 @@ import {
   faWifi,
 } from '@fortawesome/free-solid-svg-icons';
 
-import planHogar from '../../../assets/internet/plan-hogar.png';
-import planHogarPlus from '../../../assets/internet/plan-hogar-plus.png';
-import planEmpresa from '../../../assets/internet/plan-empresa.png';
-import planCorporativo from '../../../assets/internet/plan-corporativo.png';
+import planHogar from '../../../assets/internet/plan-hogar.webp';
+import planHogarPlus from '../../../assets/internet/plan-hogar-plus.webp';
+import planEmpresa from '../../../assets/internet/plan-empresa.webp';
+import planCorporativo from '../../../assets/internet/plan-corporativo.webp';
 
 export const iconMap = {
   'Sin contrato obligatorio': faShieldAlt,

@@ -14,7 +14,7 @@
   z-index: -2;
   background:
     linear-gradient(90deg, rgba(4, 17, 31, 0.99), rgba(4, 17, 31, 0.83) 50%, rgba(4, 17, 31, 0.48)),
-    url('../../../assets/canal/canal-entrevista-programa.png');
+    url('../../../assets/canal/canal-entrevista-programa.webp');
   background-position: center;
   background-size: cover;
 }
